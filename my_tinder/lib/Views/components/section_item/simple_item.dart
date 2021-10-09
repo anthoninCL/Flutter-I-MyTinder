@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:my_tinder/themes/app_theme.dart';
@@ -15,7 +13,7 @@ class SimpleSectionItem extends StatelessWidget implements SectionItem {
   Widget buildTitle(BuildContext context) {
     return Text(
         title!,
-        style: AppTheme.textStyles.headline4,
+        style: AppTheme.textStyles.headline1,
     );
   }
 
