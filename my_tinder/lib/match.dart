@@ -1,9 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:my_tinder/Views/matches/matches.dart';
-import 'package:my_tinder/Views/messages/messages.dart';
-import 'package:my_tinder/Views/profile/profile.dart';
+import 'package:my_tinder/views/matches/matches.dart';
+import 'package:my_tinder/views/messages/messages.dart';
+import 'package:my_tinder/views/profile/profile.dart';
+import 'package:my_tinder/themes/app_theme.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -15,6 +18,8 @@ class MyApp extends StatelessWidget {
       title: 'Match',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        textTheme: AppTheme.textStyles,
+
       ),
       home: const MyHomePage(),
       debugShowCheckedModeBanner: false,
@@ -61,9 +66,11 @@ class _MyHomePageState extends State<MyHomePage> {
     ],
     currentIndex: _selectedIndex,
     onTap: _onItemTapped,
-    backgroundColor: Colors.black.withOpacity(0.4),
+    backgroundColor: AppTheme.colors.black40,
     elevation: 1,
-    selectedItemColor: Colors.white,
-    unselectedItemColor: const Color(0xCCCCCCCC),
+    selectedItemColor: AppTheme.colors.white,
+    unselectedItemColor: AppTheme.colors.greyLight,
+    // above could be used AppTheme.colors.greyLight
+    // and for a text it will be Theme.of(context).textTheme.headline6,
   );
 }
