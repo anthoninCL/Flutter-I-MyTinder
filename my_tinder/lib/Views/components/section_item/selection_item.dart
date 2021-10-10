@@ -55,6 +55,10 @@ class _SelectionSectionItemState extends State<SelectionSectionItem> {
           });
         },
         child : ListTile(
+          contentPadding: const EdgeInsets.only(
+            left: 24,
+            right: 20,
+          ),
           title: Text(title),
           trailing: Text(value),
         )

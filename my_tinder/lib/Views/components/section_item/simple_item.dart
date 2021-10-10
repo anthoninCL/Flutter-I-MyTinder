@@ -20,6 +20,10 @@ class SimpleSectionItem extends StatelessWidget implements SectionItem {
   @override
   Widget buildWidget(BuildContext context) {
     return ListTile(
+      contentPadding: const EdgeInsets.only(
+        left: 24,
+        right: 20,
+      ),
       title: buildTitle(context),
     );
   }

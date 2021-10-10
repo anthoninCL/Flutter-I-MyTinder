@@ -4,14 +4,16 @@ import 'package:my_tinder/themes/app_theme.dart';
 
 import 'item.dart';
 
-class SwitchSectionItem extends StatefulWidget implements SectionItem {
+class SliderSectionItem extends StatefulWidget implements SectionItem {
   final String title;
-  final bool value;
+  final double value;
 
-  const SwitchSectionItem({required this.title, required this.value});
+  const SliderSectionItem({
+    required this.title,
+    required this.value});
 
   @override
-  _SwitchSectionItemState createState() => _SwitchSectionItemState(
+  _SliderSectionItemState createState() => _SliderSectionItemState(
       title: title, value: value
   );
 
@@ -37,10 +39,14 @@ class SwitchSectionItem extends StatefulWidget implements SectionItem {
 
 }
 
-class _SwitchSectionItemState extends State<SwitchSectionItem> {
+class _SliderSectionItemState extends State<SliderSectionItem> {
   String title;
-  bool value;
-  _SwitchSectionItemState({required this.title, required this.value});
+  double value;
+
+  _SliderSectionItemState({
+    required this.title,
+    required this.value
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,15 +54,22 @@ class _SwitchSectionItemState extends State<SwitchSectionItem> {
       contentPadding: const EdgeInsets.only(
         left: 24,
         right: 20,
-      ),
+        top: 10
+        ),
       title: Text(title),
-      trailing: Switch(
-        onChanged: (val) {
+      trailing: Text('${value.round().toString()} km'),
+      subtitle: Slider(
+        activeColor: AppTheme.colors.primary,
+        value: value,
+        min: 0,
+        max: 100,
+        divisions: 100,
+        label: value.round().toString(),
+        onChanged: (double _value) {
           setState(() {
-            value = val;
+          value = _value;
           });
         },
-        value: value,
       ),
     );
   }

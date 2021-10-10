@@ -57,6 +57,10 @@ class _IconSectionItemState extends State<IconSectionItem> {
           });
         },
         child : ListTile(
+          contentPadding: const EdgeInsets.only(
+              left: 24,
+              right: 20,
+          ),
           leading: icon,
           title: Text(title),
           trailing: Text(value),

@@ -10,7 +10,8 @@ class Section extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        physics: const ClampingScrollPhysics(),
         itemCount: itemList.length + 1,
         itemBuilder: (context, i) {
           if (i == 0) {
@@ -22,7 +23,6 @@ class Section extends StatelessWidget {
             );
           } else if (i < itemList.length) {
             return Container(
-              height: 50,
               color: AppTheme.colors.white,
               child: Center(
                   child: itemList[i]
