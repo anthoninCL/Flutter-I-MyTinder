@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:my_tinder/themes/app_theme.dart';
 
-import 'item.dart';
-
-class IconSectionItem extends StatefulWidget implements SectionItem {
+class IconSectionItem extends StatefulWidget {
   final String title;
   final String value;
   final Icon icon;
@@ -15,30 +12,6 @@ class IconSectionItem extends StatefulWidget implements SectionItem {
   _IconSectionItemState createState() => _IconSectionItemState(
       title: title, value: value, icon: icon
   );
-
-  @override
-  Widget buildTitle(BuildContext context) {
-    return Text(
-      title,
-      style: AppTheme.textStyles.headline1,
-    );
-  }
-
-  Widget buildTrailing(BuildContext context) {
-    return Text(
-      value,
-      style: AppTheme.textStyles.headline1,
-    );
-  }
-
-  @override
-  Widget buildWidget(BuildContext context) {
-    return ListTile(
-      title: buildTitle(context),
-      trailing: buildTrailing(context),
-    );
-  }
-
 }
 
 class _IconSectionItemState extends State<IconSectionItem> {

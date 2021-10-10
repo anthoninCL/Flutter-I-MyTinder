@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_tinder/views/components/section_item/icon_item.dart';
 import 'package:my_tinder/views/components/section_item/range_slider_item.dart';
 import 'package:my_tinder/views/components/section_item/selection_item.dart';
+import 'package:my_tinder/views/components/section_item/simple_item.dart';
 import 'package:my_tinder/views/components/section_item/slider_item.dart';
 import 'package:my_tinder/views/components/section_item/switch_item.dart';
 import 'package:my_tinder/views/components/section_item/title_item.dart';
@@ -25,41 +27,82 @@ class _ProfileEditState extends State<ProfileEdit> {
             children: [
               const Section(
                   itemList: [
-                    TitleSectionItem("Settings"),
-                    SelectionSectionItem(
-                        title: "Phone number",
-                        value: "06 06 06 06 06"
+                    TitleSectionItem("Lifestyle"),
+                    IconSectionItem(
+                      icon: Icon(
+                        Icons.nightlight_outlined,
+                        color: Colors.black,
+                      ),
+                      title: "Astrological sign",
+                      value: "Leo",
                     ),
-                    SelectionSectionItem(
-                        title: "Email address",
-                        value: "email@adress.com"
+                    IconSectionItem(
+                      icon: Icon(
+                        Icons.fastfood_outlined,
+                        color: Colors.black,
+                      ),
+                      title: "Food",
+                      value: "Vegan",
+                    ),
+                    IconSectionItem(
+                      icon: Icon(
+                        Icons.pets_outlined,
+                        color: Colors.black,
+                      ),
+                      title: "Pet",
+                      value: "Cat",
+                    ),
+                    IconSectionItem(
+                      icon: Icon(
+                        Icons.language_outlined,
+                        color: Colors.black,
+                      ),
+                      title: "Social Network",
+                      value: "Not specified",
+                    ),
+                    IconSectionItem(
+                      icon: Icon(
+                        Icons.sports_basketball_outlined,
+                        color: Colors.black,
+                      ),
+                      title: "Sport",
+                      value: "Football",
+                    ),
+                    IconSectionItem(
+                      icon: Icon(
+                        Icons.local_bar_outlined,
+                        color: Colors.black,
+                      ),
+                      title: "Drinks",
+                      value: "Gin and tonic",
+                    ),
+                    IconSectionItem(
+                      icon: Icon(
+                        Icons.smoking_rooms_outlined,
+                        color: Colors.black,
+                      ),
+                      title: "Cigarettes",
+                      value: "No",
                     ),
                   ]
               ),
               const Section(
-                  itemList: [
-                    TitleSectionItem("Preferences"),
-                    SelectionSectionItem(
-                        title: "Location",
-                        value: "Current location"
-                    ),
-                    RangeSliderSectionItem(
-                        title: "Maximal ",
-                        values: RangeValues(18, 25) // Donner la bonne range value
-                    ),
-                    SelectionSectionItem(
-                        title: "I want to meet",
-                        value: "Girls"
-                    ),
-                    SliderSectionItem(
-                      title: "Test",
-                      value: 10, // Donner la bonne range value
-                    ),
-                    SwitchSectionItem(
-                      title: "Dark Theme",
-                      value: false,
-                    ),
-                  ]
+                itemList: [
+                  TitleSectionItem("City"),
+                  SimpleSectionItem("Paris, France")
+                ],
+              ),
+              const Section(
+                itemList: [
+                  TitleSectionItem("Gender"),
+                  SimpleSectionItem("Male")
+                ],
+              ),
+              const Section(
+                itemList: [
+                  TitleSectionItem("Sexual orientation"),
+                  SimpleSectionItem("Hetero")
+                ],
               ),
               TextButton(onPressed: () {
                 Navigator.pop(context);

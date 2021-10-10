@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:my_tinder/themes/app_theme.dart';
 
-import 'item.dart';
-
-class RangeSliderSectionItem extends StatefulWidget implements SectionItem {
+class RangeSliderSectionItem extends StatefulWidget {
   final String title;
   final RangeValues values;
 
@@ -16,21 +14,6 @@ class RangeSliderSectionItem extends StatefulWidget implements SectionItem {
   _RangeSliderSectionItemState createState() => _RangeSliderSectionItemState(
       title: title, values: values
   );
-
-  @override
-  Widget buildTitle(BuildContext context) {
-    return Text(
-      title,
-      style: AppTheme.textStyles.headline1,
-    );
-  }
-
-  @override
-  Widget buildWidget(BuildContext context) {
-    return ListTile(
-      title: buildTitle(context),
-    );
-  }
 }
 
 class _RangeSliderSectionItemState extends State<RangeSliderSectionItem> {
