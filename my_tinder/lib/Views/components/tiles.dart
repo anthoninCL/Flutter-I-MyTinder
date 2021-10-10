@@ -19,48 +19,42 @@ class Tiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-            color: isSelected ? AppTheme.colors.primary : AppTheme.colors.grey),
-        borderRadius: const BorderRadius.all(Radius.circular(15)),
-      ),
-      child: hasIcon == true
-          ? Container(
-              padding: const EdgeInsets.all(6),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    icon,
-                    color: isSelected == true
-                        ? AppTheme.colors.primary
-                        : AppTheme.colors.grey,
-                    size: 20,
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Text(
-                    name,
-                    style: TextStyle(
-                        color: isSelected
-                            ? AppTheme.colors.primary
-                            : AppTheme.colors.grey),
-                  ),
-                ],
-              ),
-            )
-          : Container(
-              padding: const EdgeInsets.all(6),
-              child: Text(
+        decoration: BoxDecoration(
+          border: Border.all(
+              color:
+                  isSelected ? AppTheme.colors.primary : AppTheme.colors.grey),
+          borderRadius: const BorderRadius.all(Radius.circular(15)),
+        ),
+        child: Container(
+          padding: const EdgeInsets.all(6),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (hasIcon == true)
+                Row(
+                  children: [
+                    Icon(
+                      icon,
+                      color: isSelected == true
+                          ? AppTheme.colors.primary
+                          : AppTheme.colors.grey,
+                      size: 20,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                  ],
+                ),
+              Text(
                 name,
                 style: TextStyle(
                     color: isSelected
                         ? AppTheme.colors.primary
                         : AppTheme.colors.grey),
               ),
-            ),
-    );
+            ],
+          ),
+        ));
   }
 }
