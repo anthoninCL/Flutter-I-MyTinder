@@ -18,7 +18,8 @@ class MyApp extends StatelessWidget {
       title: 'Match',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        textTheme: AppTheme.textStyles
+        textTheme: AppTheme.textStyles,
+
       ),
       home: const MyHomePage(),
       debugShowCheckedModeBanner: false,

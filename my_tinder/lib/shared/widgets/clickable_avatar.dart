@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:my_tinder/themes/app_theme.dart';
 
 class ClickableAvatar extends StatelessWidget {
   const ClickableAvatar({
