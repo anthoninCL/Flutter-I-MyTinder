@@ -37,7 +37,8 @@ class Constants {
         [
           Message("How are you doing?", "18:22", true),
           Message("Fine and you?", "18:28", false),
-          Message("Doing something tonight?", "18:29", false)
+          Message("Doing something tonight?", "18:29", false),
+          Message("Wanna drink?", "18:29", false)
         ]
     ),
     Conversation(
@@ -52,7 +53,8 @@ class Constants {
         "assets/images/profile_pic_5.jpg",
         [
           Message("Hello!", "21:12", false),
-          Message("Hey Sandy!", "21:23", true)
+          Message("Hey Sandy!", "21:23", true),
+          Message("How are you?", "21:24", true),
         ]
     ),
     Conversation(
