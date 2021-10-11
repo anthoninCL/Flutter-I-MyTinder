@@ -5,14 +5,12 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 class Tiles extends StatelessWidget {
   final String name;
   final bool isSelected;
-  final bool hasIcon;
-  final IconData icon;
+  final IconData? icon;
 
   const Tiles(
       {Key? key,
       required this.name,
       required this.isSelected,
-      required this.hasIcon,
       this.icon = MdiIcons.nullIcon})
       : super(key: key);
 
@@ -31,7 +29,7 @@ class Tiles extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (hasIcon == true)
+              if (icon != MdiIcons.nullIcon)
                 Row(
                   children: [
                     Icon(
