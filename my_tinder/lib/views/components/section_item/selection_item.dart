@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:my_tinder/themes/app_theme.dart';
 
 class SelectionSectionItem extends StatefulWidget {
   final String title;
@@ -33,8 +34,24 @@ class _SelectionSectionItemState extends State<SelectionSectionItem> {
             left: 24,
             right: 20,
           ),
-          title: Text(title),
-          trailing: Text(value),
+          title: Text(
+            title,
+            style: TextStyle(
+                color: AppTheme.colors.black,
+                fontWeight: FontWeight.normal,
+                fontFamily: 'Roboto',
+                fontSize: 16
+            ),
+          ),
+          trailing: Text(
+            value,
+            style: TextStyle(
+                color: AppTheme.colors.grey,
+                fontWeight: FontWeight.normal,
+                fontFamily: 'Roboto',
+                fontSize: 16
+            ),
+          ),
         )
     );
   }

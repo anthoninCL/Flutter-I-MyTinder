@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:my_tinder/themes/app_theme.dart';
 
 class SwitchSectionItem extends StatefulWidget {
   final String title;
@@ -26,7 +27,15 @@ class _SwitchSectionItemState extends State<SwitchSectionItem> {
         left: 24,
         right: 20,
       ),
-      title: Text(title),
+      title: Text(
+        title,
+        style: TextStyle(
+            color: AppTheme.colors.black,
+            fontWeight: FontWeight.normal,
+            fontFamily: 'Roboto',
+            fontSize: 16
+        ),
+      ),
       trailing: Switch(
         onChanged: (val) {
           setState(() {

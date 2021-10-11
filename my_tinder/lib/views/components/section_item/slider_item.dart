@@ -34,8 +34,24 @@ class _SliderSectionItemState extends State<SliderSectionItem> {
         right: 20,
         top: 10
         ),
-      title: Text(title),
-      trailing: Text('${value.round().toString()} km'),
+      title: Text(
+        title,
+        style: TextStyle(
+            color: AppTheme.colors.black,
+            fontWeight: FontWeight.normal,
+            fontFamily: 'Roboto',
+            fontSize: 16
+        ),
+      ),
+      trailing: Text(
+        '${value.round().toString()} km',
+        style: TextStyle(
+            color: AppTheme.colors.grey,
+            fontWeight: FontWeight.normal,
+            fontFamily: 'Roboto',
+            fontSize: 16
+        ),
+      ),
       subtitle: Slider(
         activeColor: AppTheme.colors.primary,
         value: value,

@@ -12,8 +12,13 @@ class SimpleSectionItem extends StatelessWidget implements SectionItem {
   @override
   Widget buildTitle(BuildContext context) {
     return Text(
-        title!,
-        style: AppTheme.textStyles.headline1,
+      title!,
+      style: TextStyle(
+        color: AppTheme.colors.black,
+        fontWeight: FontWeight.normal,
+        fontFamily: 'Roboto',
+        fontSize: 16
+      ),
     );
   }
 

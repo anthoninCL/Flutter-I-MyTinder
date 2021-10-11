@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:my_tinder/themes/app_theme.dart';
 
 class IconSectionItem extends StatefulWidget {
   final String title;
@@ -31,12 +32,28 @@ class _IconSectionItemState extends State<IconSectionItem> {
         },
         child : ListTile(
           contentPadding: const EdgeInsets.only(
-              left: 24,
-              right: 20,
+            left: 24,
+            right: 20,
           ),
           leading: icon,
-          title: Text(title),
-          trailing: Text(value),
+          title: Text(
+            title,
+            style: TextStyle(
+              color: AppTheme.colors.black,
+              fontWeight: FontWeight.normal,
+              fontFamily: 'Roboto',
+              fontSize: 16
+            ),
+          ),
+          trailing: Text(
+            value,
+            style: TextStyle(
+              color: AppTheme.colors.grey,
+              fontWeight: FontWeight.normal,
+              fontFamily: 'Roboto',
+              fontSize: 16
+            ),
+          ),
         )
     );
   }

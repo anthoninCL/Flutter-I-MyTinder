@@ -33,8 +33,24 @@ class _RangeSliderSectionItemState extends State<RangeSliderSectionItem> {
           right: 20,
           top: 10
       ),
-      title: Text(title),
-      trailing: Text('${values.start.round().toString()} - ${values.end.round().toString()}'),
+      title: Text(
+        title,
+        style: TextStyle(
+            color: AppTheme.colors.black,
+            fontWeight: FontWeight.normal,
+            fontFamily: 'Roboto',
+            fontSize: 16
+        ),
+      ),
+      trailing: Text(
+        '${values.start.round().toString()} - ${values.end.round().toString()}',
+        style: TextStyle(
+            color: AppTheme.colors.grey,
+            fontWeight: FontWeight.normal,
+            fontFamily: 'Roboto',
+            fontSize: 16
+        ),
+      ),
       subtitle: RangeSlider(
         activeColor: AppTheme.colors.primary,
         values: values,

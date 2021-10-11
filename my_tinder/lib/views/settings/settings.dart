@@ -26,7 +26,7 @@ class _SettingsState extends State<Settings> {
               children: [
                 const Section(
                     itemList: [
-                      TitleSectionItem("Settings"),
+                      TitleSectionItem("SETTINGS"),
                       SelectionSectionItem(
                           title: "Phone number",
                           value: "06 06 06 06 06"

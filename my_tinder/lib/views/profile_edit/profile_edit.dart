@@ -4,8 +4,10 @@ import 'package:my_tinder/views/components/section_item/icon_item.dart';
 import 'package:my_tinder/views/components/section_item/range_slider_item.dart';
 import 'package:my_tinder/views/components/section_item/selection_item.dart';
 import 'package:my_tinder/views/components/section_item/simple_item.dart';
+import 'package:my_tinder/views/components/section_item/simple_selection_item.dart';
 import 'package:my_tinder/views/components/section_item/slider_item.dart';
 import 'package:my_tinder/views/components/section_item/switch_item.dart';
+import 'package:my_tinder/views/components/section_item/text_input_item.dart';
 import 'package:my_tinder/views/components/section_item/title_item.dart';
 import 'package:my_tinder/views/widgets/section.dart';
 
@@ -26,8 +28,20 @@ class _ProfileEditState extends State<ProfileEdit> {
             scrollDirection: Axis.vertical,
             children: [
               const Section(
+                itemList: [
+                  TitleSectionItem("ABOUT ME"),
+                  TextInputSectionItem(value: 'Paris, France')
+                ],
+              ),
+              const Section(
+                itemList: [
+                  TitleSectionItem("INTERESTS"),
+                  SimpleSelectionSectionItem(value: 'Sport, Music, Travel')
+                ],
+              ),
+              const Section(
                   itemList: [
-                    TitleSectionItem("Lifestyle"),
+                    TitleSectionItem("LIFESTYLE"),
                     IconSectionItem(
                       icon: Icon(
                         Icons.nightlight_outlined,
@@ -88,20 +102,20 @@ class _ProfileEditState extends State<ProfileEdit> {
               ),
               const Section(
                 itemList: [
-                  TitleSectionItem("City"),
-                  SimpleSectionItem("Paris, France")
+                  TitleSectionItem("CITY"),
+                  SimpleSelectionSectionItem(value: 'Paris, France')
                 ],
               ),
               const Section(
                 itemList: [
-                  TitleSectionItem("Gender"),
-                  SimpleSectionItem("Male")
+                  TitleSectionItem("GENDER"),
+                  SimpleSelectionSectionItem(value: 'Male')
                 ],
               ),
               const Section(
                 itemList: [
-                  TitleSectionItem("Sexual orientation"),
-                  SimpleSectionItem("Hetero")
+                  TitleSectionItem("SEXUAL ORIENTATION"),
+                  SimpleSelectionSectionItem(value: "Hetero")
                 ],
               ),
               TextButton(onPressed: () {
