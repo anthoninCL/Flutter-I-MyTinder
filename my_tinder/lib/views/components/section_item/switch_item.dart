@@ -37,6 +37,7 @@ class _SwitchSectionItemState extends State<SwitchSectionItem> {
         ),
       ),
       trailing: Switch(
+        activeColor: AppTheme.colors.primary,
         onChanged: (val) {
           setState(() {
             value = val;
