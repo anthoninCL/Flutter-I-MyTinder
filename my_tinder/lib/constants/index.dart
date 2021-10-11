@@ -38,6 +38,10 @@ class Constants {
           Message("How are you doing?", "18:22", true),
           Message("Fine and you?", "18:28", false),
           Message("Doing something tonight?", "18:29", false),
+          Message("Wanna drink?", "18:29", false),
+          Message("Wanna drink?", "18:29", false),
+          Message("Wanna drink?", "18:29", false),
+          Message("Wanna drink?", "18:29", false),
           Message("Wanna drink?", "18:29", false)
         ]
     ),

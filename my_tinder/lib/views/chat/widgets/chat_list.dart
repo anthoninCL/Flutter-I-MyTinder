@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:my_tinder/constants/messages.dart';
 import 'package:my_tinder/shared/utils/chat_utils.dart';
@@ -11,12 +13,15 @@ class ChatList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.only(top: 10, bottom: 75),
       child: ListView.builder(
+        reverse: true,
         itemCount: conversation.conversation.length,
         shrinkWrap: true,
         padding: const EdgeInsets.only(top: 10,bottom: 10),
-        itemBuilder: (context, index){
+        itemBuilder: (context, i){
+          int index = conversation.conversation.length - 1 - i;
+
           return MessageCard(
               index: index,
               conversation: conversation.conversation,
