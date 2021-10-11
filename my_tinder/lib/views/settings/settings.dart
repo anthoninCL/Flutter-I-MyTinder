@@ -39,7 +39,7 @@ class _SettingsState extends State<Settings> {
                 ),
                 const Section(
                     itemList: [
-                      TitleSectionItem("Preferences"),
+                      TitleSectionItem("PREFERENCES"),
                       SelectionSectionItem(
                           title: "Location",
                           value: "Current location"
@@ -64,7 +64,7 @@ class _SettingsState extends State<Settings> {
                 ),
                 const Section(
                     itemList: [
-                      TitleSectionItem("Settings"),
+                      TitleSectionItem("SETTINGS"),
                       SimpleSectionItem("Privacy policy"),
                       SimpleSectionItem("Terms of use"),
                     ]
