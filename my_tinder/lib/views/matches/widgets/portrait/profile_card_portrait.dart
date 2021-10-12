@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:my_tinder/Views/matches/widgets/profile_card_footer.dart';
-import 'package:my_tinder/Views/matches/widgets/profile_card_header.dart';
+import 'package:my_tinder/views/matches/widgets/portrait/profile_card_portrait_footer.dart';
+import 'package:my_tinder/views/matches/widgets/portrait/profile_card_portrait_header.dart';
 import 'package:my_tinder/constants/matches.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
-class ProfileCard extends StatelessWidget {
+class ProfileCardPortrait extends StatelessWidget {
   final Match profile;
   final int index;
   final AutoScrollController controller;
 
-  const ProfileCard(
+  const ProfileCardPortrait(
       {Key? key,
       required this.profile,
       required this.index,
@@ -29,9 +29,9 @@ class ProfileCard extends StatelessWidget {
             height: MediaQuery.of(context).size.height - 40,
             child: Column(
               children: [
-                ProfileCardHeader(profile: profile,),
+                ProfileCardPortraitHeader(profile: profile,),
                 const Spacer(),
-                ProfileCardFooter(
+                ProfileCardPortraitFooter(
                   profile: profile,
                   index: index,
                   controller: controller,

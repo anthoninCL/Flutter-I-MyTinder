@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:my_tinder/constants/matches.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
-class ProfileCardFooter extends StatelessWidget {
+class ProfileCardPortraitFooter extends StatelessWidget {
   final Match profile;
   final int index;
-  final controller;
+  final AutoScrollController controller;
 
-  const ProfileCardFooter(
+  const ProfileCardPortraitFooter(
       {Key? key,
       required this.profile,
       required this.index,

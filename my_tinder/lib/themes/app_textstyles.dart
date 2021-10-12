@@ -5,7 +5,7 @@ class AppTextStyles extends TextTheme {
       headline1: TextStyle(
           fontSize: 35.0,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Roboto'
+          fontFamily: 'Roboto',
       ),
       headline2: TextStyle(
           fontSize: 27.0,

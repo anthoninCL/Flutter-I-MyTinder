@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_tinder/constants/matches.dart';
 
-class ProfileCardHeader extends StatelessWidget {
+class ProfileCardPortraitHeader extends StatelessWidget {
   final Match profile;
 
-  const ProfileCardHeader({Key? key, required this.profile}) : super(key: key);
+  const ProfileCardPortraitHeader({Key? key, required this.profile}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
