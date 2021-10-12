@@ -3,7 +3,7 @@ import 'package:my_tinder/themes/app_theme.dart';
 
 import 'floatting_text_button.dart';
 
-bottomModal(context, title) {
+bottomModal(context, title, list) {
   return (showModalBottomSheet(
       shape: const RoundedRectangleBorder(
           borderRadius:
@@ -19,21 +19,34 @@ bottomModal(context, title) {
             child: Column(
               children: [
                 Expanded(
+                  child: Padding(
+                  padding: const EdgeInsets.all(30.0),
                   child: Text(
-                    title,
-                    style: TextStyle(
+                      title,
+                      style: TextStyle(
                         color: AppTheme.colors.black,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Roboto',
                         fontSize: 25
+                      ),
                     ),
                   ),
                 ),
-                const Expanded(
-                  child: Text('Lalala')
+                Expanded(
+                  child: Row(
+                    // TODO: style in order to set tiles at the top
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      for(var item in list ) item
+                    ],
+                  ),
                 ),
                 const Flexible(
-                  child: FloattingTextButton(title: 'Finish'),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 50),
+                    child :FloattingTextButton(title: 'Finish'),
+                  )
+
                 )
               ],
             ),
