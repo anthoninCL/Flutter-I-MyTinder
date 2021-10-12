@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_tinder/views/components/dismiss_keyboard.dart';
 import 'package:my_tinder/views/components/section_item/icon_item.dart';
 import 'package:my_tinder/views/components/section_item/range_slider_item.dart';
 import 'package:my_tinder/views/components/section_item/selection_item.dart';
@@ -21,109 +22,111 @@ class ProfileEdit extends StatefulWidget {
 class _ProfileEditState extends State<ProfileEdit> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: ListView(
-            scrollDirection: Axis.vertical,
-            children: [
-              const Section(
-                itemList: [
-                  TitleSectionItem("ABOUT ME"),
-                  TextInputSectionItem(value: 'Paris, France')
-                ],
-              ),
-              const Section(
-                itemList: [
-                  TitleSectionItem("INTERESTS"),
-                  SimpleSelectionSectionItem(value: 'Sport, Music, Travel')
-                ],
-              ),
-              const Section(
+    return DismissKeyboard(
+      child: Scaffold(
+        body: SafeArea(
+          child: Center(
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: [
+                const Section(
                   itemList: [
-                    TitleSectionItem("LIFESTYLE"),
-                    IconSectionItem(
-                      icon: Icon(
-                        Icons.nightlight_outlined,
-                        color: Colors.black,
+                    TitleSectionItem("ABOUT ME"),
+                    TextInputSectionItem(value: 'Paris, France')
+                  ],
+                ),
+                const Section(
+                  itemList: [
+                    TitleSectionItem("INTERESTS"),
+                    SimpleSelectionSectionItem(value: 'Sport, Music, Travel')
+                  ],
+                ),
+                const Section(
+                    itemList: [
+                      TitleSectionItem("LIFESTYLE"),
+                      IconSectionItem(
+                        icon: Icon(
+                          Icons.nightlight_outlined,
+                          color: Colors.black,
+                        ),
+                        title: "Astrological sign",
+                        value: "Leo",
                       ),
-                      title: "Astrological sign",
-                      value: "Leo",
-                    ),
-                    IconSectionItem(
-                      icon: Icon(
-                        Icons.fastfood_outlined,
-                        color: Colors.black,
+                      IconSectionItem(
+                        icon: Icon(
+                          Icons.fastfood_outlined,
+                          color: Colors.black,
+                        ),
+                        title: "Food",
+                        value: "Vegan",
                       ),
-                      title: "Food",
-                      value: "Vegan",
-                    ),
-                    IconSectionItem(
-                      icon: Icon(
-                        Icons.pets_outlined,
-                        color: Colors.black,
+                      IconSectionItem(
+                        icon: Icon(
+                          Icons.pets_outlined,
+                          color: Colors.black,
+                        ),
+                        title: "Pet",
+                        value: "Cat",
                       ),
-                      title: "Pet",
-                      value: "Cat",
-                    ),
-                    IconSectionItem(
-                      icon: Icon(
-                        Icons.language_outlined,
-                        color: Colors.black,
+                      IconSectionItem(
+                        icon: Icon(
+                          Icons.language_outlined,
+                          color: Colors.black,
+                        ),
+                        title: "Social Network",
+                        value: "Not specified",
                       ),
-                      title: "Social Network",
-                      value: "Not specified",
-                    ),
-                    IconSectionItem(
-                      icon: Icon(
-                        Icons.sports_basketball_outlined,
-                        color: Colors.black,
+                      IconSectionItem(
+                        icon: Icon(
+                          Icons.sports_basketball_outlined,
+                          color: Colors.black,
+                        ),
+                        title: "Sport",
+                        value: "Football",
                       ),
-                      title: "Sport",
-                      value: "Football",
-                    ),
-                    IconSectionItem(
-                      icon: Icon(
-                        Icons.local_bar_outlined,
-                        color: Colors.black,
+                      IconSectionItem(
+                        icon: Icon(
+                          Icons.local_bar_outlined,
+                          color: Colors.black,
+                        ),
+                        title: "Drinks",
+                        value: "Gin and tonic",
                       ),
-                      title: "Drinks",
-                      value: "Gin and tonic",
-                    ),
-                    IconSectionItem(
-                      icon: Icon(
-                        Icons.smoking_rooms_outlined,
-                        color: Colors.black,
+                      IconSectionItem(
+                        icon: Icon(
+                          Icons.smoking_rooms_outlined,
+                          color: Colors.black,
+                        ),
+                        title: "Cigarettes",
+                        value: "No",
                       ),
-                      title: "Cigarettes",
-                      value: "No",
-                    ),
-                  ]
-              ),
-              const Section(
-                itemList: [
-                  TitleSectionItem("CITY"),
-                  SimpleSelectionSectionItem(value: 'Paris, France')
-                ],
-              ),
-              const Section(
-                itemList: [
-                  TitleSectionItem("GENDER"),
-                  SimpleSelectionSectionItem(value: 'Male')
-                ],
-              ),
-              const Section(
-                itemList: [
-                  TitleSectionItem("SEXUAL ORIENTATION"),
-                  SimpleSelectionSectionItem(value: "Hetero")
-                ],
-              ),
-              TextButton(onPressed: () {
-                Navigator.pop(context);
-                }, child: const Text("Go back")
-              ),
-            ],
-          )
+                    ]
+                ),
+                const Section(
+                  itemList: [
+                    TitleSectionItem("CITY"),
+                    SimpleSelectionSectionItem(value: 'Paris, France')
+                  ],
+                ),
+                const Section(
+                  itemList: [
+                    TitleSectionItem("GENDER"),
+                    SimpleSelectionSectionItem(value: 'Male')
+                  ],
+                ),
+                const Section(
+                  itemList: [
+                    TitleSectionItem("SEXUAL ORIENTATION"),
+                    SimpleSelectionSectionItem(value: "Hetero")
+                  ],
+                ),
+                TextButton(onPressed: () {
+                  Navigator.pop(context);
+                  }, child: const Text("Go back")
+                ),
+              ],
+            )
+          ),
         ),
       ),
     );

@@ -28,6 +28,7 @@ class _TextInputSectionItemState extends State<TextInputSectionItem> {
       child: const SizedBox(
         child: TextField(
           keyboardType: TextInputType.multiline,
+          textInputAction: TextInputAction.go,
           maxLines: null,
           decoration: InputDecoration(
             border: InputBorder.none,
