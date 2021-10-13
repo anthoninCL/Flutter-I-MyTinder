@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:my_tinder/constants/matches.dart';
+import 'package:my_tinder/shared/widgets/button.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
-class ProfileCardPortraitFooter extends StatelessWidget {
+class ProfileCardPortraitFooter extends StatefulWidget {
   final Match profile;
   final int index;
   final AutoScrollController controller;
@@ -13,6 +15,26 @@ class ProfileCardPortraitFooter extends StatelessWidget {
       required this.index,
       required this.controller})
       : super(key: key);
+
+  @override
+  State<ProfileCardPortraitFooter> createState() => _ProfileCardPortraitFooterState();
+}
+
+class _ProfileCardPortraitFooterState extends State<ProfileCardPortraitFooter> {
+
+  late MatchButton skipButton;
+  late MatchButton likeButton;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Initialise buttons
+    skipButton = MatchButton(Icons.close, SystemSoundType.alert, widget.controller, widget.index);
+    likeButton = MatchButton(Icons.favorite_outline, SystemSoundType.alert, widget.controller, widget.index);
+  }
+
+  Widget buildMatchButton(MatchButton button) => button.buildButton();
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +48,10 @@ class ProfileCardPortraitFooter extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               buildProfileDescription(
-                  name: profile.name,
-                  age: profile.age,
-                  description: profile.bio),
-              buildChoiceRow(index: index),
+                  name: widget.profile.name,
+                  age: widget.profile.age,
+                  description: widget.profile.bio),
+              buildChoiceRow(index: widget.index),
             ],
           ),
         ),
@@ -58,32 +80,11 @@ class ProfileCardPortraitFooter extends StatelessWidget {
         ],
       );
 
-  Future _scrollToIndex(index) async {
-    await controller.scrollToIndex(index + 1,
-        preferPosition: AutoScrollPosition.begin);
-  }
-
   Widget buildChoiceRow({required index}) => Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          FloatingActionButton(
-            onPressed: () => _scrollToIndex(index),
-            child: const Icon(
-              Icons.close,
-              size: 30,
-              color: Colors.black,
-            ),
-            backgroundColor: Colors.white,
-          ),
-          FloatingActionButton(
-            onPressed: () => _scrollToIndex(index),
-            child: const Icon(
-              Icons.favorite_outline,
-              size: 30,
-              color: Colors.red,
-            ),
-            backgroundColor: Colors.white,
-          ),
+          buildMatchButton(skipButton),
+          buildMatchButton(likeButton),
         ],
       );
 }
