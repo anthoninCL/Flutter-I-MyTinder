@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_tinder/constants/matches.dart';
 import 'package:my_tinder/shared/widgets/button.dart';
+import 'package:my_tinder/themes/app_theme.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 class ProfileCardPortraitFooter extends StatefulWidget {
@@ -30,8 +31,8 @@ class _ProfileCardPortraitFooterState extends State<ProfileCardPortraitFooter> {
     super.initState();
 
     // Initialise buttons
-    skipButton = MatchButton(Icons.close, SystemSoundType.alert, widget.controller, widget.index);
-    likeButton = MatchButton(Icons.favorite_outline, SystemSoundType.alert, widget.controller, widget.index);
+    skipButton = MatchButton(const Icon(Icons.close, color: Colors.black),  SystemSoundType.alert, widget.controller, widget.index);
+    likeButton = MatchButton(Icon(Icons.favorite_outline, size: 25, color: AppTheme.colors.primary), SystemSoundType.alert, widget.controller, widget.index);
   }
 
   Widget buildMatchButton(MatchButton button) => button.buildButton();
