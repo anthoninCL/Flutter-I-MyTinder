@@ -4,7 +4,7 @@ import 'package:scroll_to_index/scroll_to_index.dart';
 
 abstract class Button {
   late SystemSoundType sound;
-  late IconData icon;
+  late Icon icon;
 
   void onPress();
 
@@ -13,7 +13,7 @@ abstract class Button {
 
 class MatchButton implements Button {
   @override
-  IconData icon;
+  Icon icon;
 
   @override
   SystemSoundType sound;
@@ -36,11 +36,7 @@ class MatchButton implements Button {
   @override
   Widget buildButton() => FloatingActionButton(
     onPressed: onPress,
-    child: Icon(
-      icon,
-      size: 30,
-      color: Colors.black,
-    ),
+    child: icon,
     backgroundColor: Colors.white,
   );
 }
