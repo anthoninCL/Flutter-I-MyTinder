@@ -19,12 +19,15 @@ class UserLifeStyles extends StatelessWidget {
         child: Wrap(
           runSpacing: 8,
           spacing: 8,
-          children: lifeStyleArray.map((lifestyle) {
-            return Tiles(
+          children: lifeStyleArray.map(
+            (lifestyle) {
+              return Tiles(
                 name: lifestyle.value,
                 isSelected: lifestyle.isSelected,
-                icon: lifestyle.icon);
-          }).toList(),
+                icon: lifestyle.icon,
+              );
+            },
+          ).toList(),
         ),
       ),
     );
