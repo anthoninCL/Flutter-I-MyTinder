@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:my_tinder/themes/app_theme.dart';
 import 'package:my_tinder/views/profile_edit/profile_edit.dart';
 import 'package:my_tinder/views/settings/settings.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
@@ -98,4 +99,40 @@ class SettingsButton implements Button {
       MaterialPageRoute(builder: (context) => const Settings()),
     );
   }
+}
+
+class PhotoButton implements Button {
+  @override
+  Icon icon;
+
+  @override
+  SystemSoundType sound;
+
+  Function onPressed;
+
+  PhotoButton(this.icon, this.sound, this.onPressed);
+
+
+  @override
+  Widget buildButton() => Padding(
+    padding: const EdgeInsets.only(top: 8.0),
+    child: GestureDetector(
+      onTap: onPress,
+      child: Container(
+        width: 70.0,
+        height: 70.0,
+        decoration: BoxDecoration(
+          color: AppTheme.colors.primary,
+          shape: BoxShape.circle,
+        ),
+        child: icon,
+      ),
+    ),
+  );
+
+  @override
+  void onPress() {
+    onPressed();
+  }
+
 }

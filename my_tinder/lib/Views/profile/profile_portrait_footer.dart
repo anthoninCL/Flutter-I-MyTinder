@@ -6,36 +6,53 @@ import 'package:my_tinder/themes/app_theme.dart';
 
 class ProfilePortraitFooter extends StatefulWidget {
   final ProfileModel profile;
+  final Function showPicker;
 
-  const ProfilePortraitFooter(
-      {Key? key,
-        required this.profile,})
-      : super(key: key);
+  const ProfilePortraitFooter({
+    Key? key,
+    required this.profile,
+    required this.showPicker,
+  }) : super(key: key);
 
   @override
   State<ProfilePortraitFooter> createState() => _ProfilePortraitFooterState();
 }
 
 class _ProfilePortraitFooterState extends State<ProfilePortraitFooter> {
-
   late EditButton editButton;
   late SettingsButton settingsButton;
-
-  @override
-  void initState() {
-    super.initState();
-
-    // Initialise buttons
-  }
+  late PhotoButton photoButton;
 
   Widget buildButton(Button button) => button.buildButton();
 
   @override
   Widget build(BuildContext context) {
-    editButton = EditButton(Icon(Icons.edit, size: 25, color: AppTheme.colors.grey,), SystemSoundType.click, context);
-    settingsButton = SettingsButton(Icon(Icons.settings, size: 25, color: AppTheme.colors.grey,), SystemSoundType.click, context);
+    photoButton = PhotoButton(
+        Icon(
+          Icons.photo_camera,
+          size: 30,
+          color: AppTheme.colors.white,
+        ),
+        SystemSoundType.click,
+        () => widget.showPicker());
+    editButton = EditButton(
+        Icon(
+          Icons.edit,
+          size: 25,
+          color: AppTheme.colors.grey,
+        ),
+        SystemSoundType.click,
+        context);
+    settingsButton = SettingsButton(
+        Icon(
+          Icons.settings,
+          size: 25,
+          color: AppTheme.colors.grey,
+        ),
+        SystemSoundType.click,
+        context);
     return Padding(
-      padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height / 7),
+      padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height / 8),
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -53,31 +70,38 @@ class _ProfilePortraitFooterState extends State<ProfilePortraitFooter> {
   }
 
   Widget buildProfileDescription(
-      {required String name,
-        required num age,
-        required String description}) =>
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            name + ", " + age.toString(),
-            style: const TextStyle(
-                fontSize: 27, fontWeight: FontWeight.bold, color: Colors.white),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            description,
-            style: const TextStyle(fontSize: 16, color: Colors.white),
-          ),
-          const SizedBox(height: 20),
-        ],
+          {required String name,
+          required num age,
+          required String description}) =>
+      Padding(
+        padding: const EdgeInsets.only(bottom: 10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              name + ", " + age.toString(),
+              style: const TextStyle(
+                  fontSize: 27,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              description,
+              style: const TextStyle(fontSize: 16, color: Colors.white),
+            ),
+            const SizedBox(height: 20),
+          ],
+        ),
       );
 
   Widget buildChoiceRow() => Row(
-    mainAxisAlignment: MainAxisAlignment.spaceAround,
-    children: [
-      buildButton(settingsButton),
-      buildButton(editButton),
-    ],
-  );
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          buildButton(settingsButton),
+          buildButton(photoButton),
+          buildButton(editButton),
+        ],
+      );
 }
