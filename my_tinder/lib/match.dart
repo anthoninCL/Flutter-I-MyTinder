@@ -43,21 +43,25 @@ class _MyHomePageState extends State<MyHomePage> {
     SharedPreferences sPref = await SharedPreferences.getInstance();
     sPref.setString("username", "John");
     sPref.setInt("age", 24);
+    sPref.setString("phoneNumber", "0634563945");
+    sPref.setString("email", "john.doe@gmail.com");
+    sPref.setString("ageRange", "18-25");
+    sPref.setString("wantToMeet", "Girls");
+    sPref.setInt("range", 10);
     sPref.setString("bio", "Positive attitude is the key of success 🔑");
     sPref.setStringList("images", ["assets/images/main_profile_pic.jpg"]);
-    sPref.setStringList("lifestyles", [
-      "zodiac sign.Aries",
-      "food.Vegan",
-      "pet.Cat",
-      "social network.Unspecified",
-      "sport.Gym",
-      "drinks.Gyn Tonic",
-      "cigarettes.Unspecified"
-    ]);
+    sPref.setString("zodiacSign", "Aries");
+    sPref.setString("food", "Vegan");
+    sPref.setString("pet", "Cat");
+    sPref.setString("socialNetwork", "Unspecified");
+    sPref.setString("sport", "Gym");
+    sPref.setString("drinks", "Gyn Tonic");
+    sPref.setString("cigarettes", "Unspecified");
     sPref.setStringList("interests", ["Travel", "Sports", "Entrepreneurship", "Globe-trotter"]);
     sPref.setString("city", "Paris, France");
     sPref.setString("gender", "Male");
     sPref.setString("orientation", "Hetero");
+    print("ECRIT DNA SLE FDP");
     return true;
   }
 

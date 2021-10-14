@@ -5,7 +5,7 @@ import 'package:my_tinder/shared/widgets/button.dart';
 import 'package:my_tinder/themes/app_theme.dart';
 
 class ProfilePortraitFooter extends StatefulWidget {
-  final ProfileModel profile;
+  final ValueNotifier<ProfileModel?> profile;
   final Function showPicker;
 
   const ProfilePortraitFooter({
@@ -42,7 +42,8 @@ class _ProfilePortraitFooterState extends State<ProfilePortraitFooter> {
           color: AppTheme.colors.grey,
         ),
         SystemSoundType.click,
-        context);
+        context,
+        widget.profile.value!);
     settingsButton = SettingsButton(
         Icon(
           Icons.settings,
@@ -50,7 +51,8 @@ class _ProfilePortraitFooterState extends State<ProfilePortraitFooter> {
           color: AppTheme.colors.grey,
         ),
         SystemSoundType.click,
-        context);
+        context,
+        widget.profile);
     return Padding(
       padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height / 8),
       child: SizedBox(
@@ -59,9 +61,9 @@ class _ProfilePortraitFooterState extends State<ProfilePortraitFooter> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             buildProfileDescription(
-                name: widget.profile.username,
-                age: widget.profile.age,
-                description: widget.profile.bio),
+                name: widget.profile.value!.username,
+                age: widget.profile.value!.age,
+                description: widget.profile.value!.bio),
             buildChoiceRow(),
           ],
         ),

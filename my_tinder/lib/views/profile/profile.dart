@@ -5,18 +5,29 @@ import 'package:my_tinder/views/profile/profile_portrait_footer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
 
-Future<ProfileModel> _loadProfile() async {
+Future<ProfileModel> loadProfile() async {
   SharedPreferences s = await SharedPreferences.getInstance();
   return ProfileModel(
-      s.getString("username")!,
-      s.getInt("age")!,
-      s.getString("bio")!,
-      s.getStringList("images")!,
-      s.getStringList("lifestyles")!,
-      s.getStringList("interests")!,
-      s.getString("city")!,
-      s.getString("gender")!,
-      s.getString("orientation")!);
+      s.getString("username") ?? "John",
+      s.getInt("age") ?? 24,
+      s.getString("bio") ?? "Positive attitude is the key of success 🔑",
+      s.getString("phoneNumber") ?? "06 34 56 39 45",
+      s.getString("email") ?? "john.doe@gmail.com",
+      s.getString("ageRange") ?? "18-25",
+      s.getString("wantToMeet") ?? "Girls",
+      s.getInt("range") ?? 10,
+      s.getStringList("images") ?? ["assets/images/main_profile_pic.jpg"],
+      s.getString("zodiacSign") ?? "Aries",
+      s.getString("food") ?? "Vegan",
+      s.getString("pet") ?? "Cat",
+      s.getString("socialNetwork") ?? "Facebook",
+      s.getString("sport") ?? "Gym",
+      s.getString("drinks") ?? "Gin and Tonic",
+      s.getString("cigarettes") ?? "Unspecified",
+      s.getStringList("interests") ?? ["Travel", "Sports", "Entrepreneurship", "Globe-trotter"],
+      s.getString("city") ?? "Paris, France",
+      s.getString("gender") ?? "Male",
+      s.getString("orientation") ?? "Hetero");
 }
 
 class Profile extends StatefulWidget {
@@ -27,7 +38,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  ProfileModel? profile;
+  ValueNotifier<ProfileModel?> profile = ValueNotifier<ProfileModel?>(null);
   bool isLoading = true;
   XFile? _image;
   final ImagePicker _picker = ImagePicker();
@@ -35,9 +46,10 @@ class _ProfileState extends State<Profile> {
   @override
   void initState() {
     super.initState();
-    _loadProfile().then((value) {
+    loadProfile().then((value) {
+      print("Finished loading profile");
       setState(() {
-        profile = value;
+        profile.value = value;
         isLoading = false;
       });
     });
@@ -79,8 +91,8 @@ class _ProfileState extends State<Profile> {
         source: ImageSource.camera, imageQuality: 50
     );
     if (image != null) {
-      profile!.images[0] = image.path;
-      s.setStringList("images", profile!.images);
+      profile.value!.images[0] = image.path;
+      s.setStringList("images", profile.value!.images);
       setState(() {
         _image = image;
       });
@@ -94,8 +106,8 @@ class _ProfileState extends State<Profile> {
         source: ImageSource.gallery, imageQuality: 50
     );
     if (image != null) {
-      profile!.images[0] = image.path;
-      s.setStringList("images", profile!.images);
+      profile.value!.images[0] = image.path;
+      s.setStringList("images", profile.value!.images);
       setState(() {
         _image = image;
       });
@@ -110,7 +122,7 @@ class _ProfileState extends State<Profile> {
             _image != null ? Image.file(File(_image!.path), fit: BoxFit.cover,
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,) : Image.asset(
-              profile!.images[0],
+              profile.value!.images[0],
               fit: BoxFit.cover,
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
@@ -126,7 +138,7 @@ class _ProfileState extends State<Profile> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        profile!.city,
+                        profile.value!.city,
                         style: const TextStyle(
                             fontSize: 25,
                             color: Colors.white,
@@ -134,7 +146,7 @@ class _ProfileState extends State<Profile> {
                       ),
                       const Spacer(),
                       ProfilePortraitFooter(
-                        profile: profile!,
+                        profile: profile,
                         showPicker: () => showPicker(context),
                       )
                     ],

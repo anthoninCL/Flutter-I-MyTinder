@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:my_tinder/Models/profile.dart';
 import 'package:my_tinder/themes/app_theme.dart';
 import 'package:my_tinder/views/profile_edit/profile_edit.dart';
 import 'package:my_tinder/views/settings/settings.dart';
@@ -54,7 +55,9 @@ class EditButton implements Button {
 
   BuildContext context;
 
-  EditButton(this.icon, this.sound, this.context);
+  ProfileModel profile;
+
+  EditButton(this.icon, this.sound, this.context, this.profile);
 
   @override
   Widget buildButton() => FloatingActionButton(
@@ -82,7 +85,9 @@ class SettingsButton implements Button {
 
   BuildContext context;
 
-  SettingsButton(this.icon, this.sound, this.context);
+  ValueNotifier<ProfileModel?> profile;
+
+  SettingsButton(this.icon, this.sound, this.context, this.profile);
 
   @override
   Widget buildButton() => FloatingActionButton(
@@ -96,7 +101,7 @@ class SettingsButton implements Button {
   void onPress() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const Settings()),
+      MaterialPageRoute(builder: (context) => Settings(profile: profile)),
     );
   }
 }
