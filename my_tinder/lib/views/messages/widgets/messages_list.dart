@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:my_tinder/constants/messages.dart';
+import 'package:my_tinder/views/chat/chat.dart';
 import 'message_item.dart';
 
 class MessagesList extends StatelessWidget {
@@ -9,10 +10,10 @@ class MessagesList extends StatelessWidget {
 
   const MessagesList({Key? key, required this.conversations}) : super(key: key);
 
-  void printProfileInfo(int index) {
-    // this need to navigate to the right conversation
-    // ignore: avoid_print
-    print(conversations[index].name);
+  void onTap(BuildContext context, int index) {
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+      return Chat(conversation: conversations[index]);
+    }));
   }
 
   @override
@@ -47,7 +48,7 @@ class MessagesList extends StatelessWidget {
                 name: conversations[index].name,
                 image: conversations[index].image,
                 lastMessage: conversations[index].conversation.last,
-                onTap: () => printProfileInfo(index),
+                onTap: () => onTap(context, index),
               );
             }
           }
