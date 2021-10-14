@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:my_tinder/themes/app_theme.dart';
 
 class HeaderBar extends StatelessWidget implements PreferredSizeWidget {
-  const HeaderBar({required this.title});
+  final String title;
+  final Function onPress;
+
+  const HeaderBar({required this.title, required this.onPress});
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +26,16 @@ class HeaderBar extends StatelessWidget implements PreferredSizeWidget {
         TextButton(
           style: TextButton.styleFrom(primary: AppTheme.colors.primary),
           onPressed: () {
-            // TODO: SAVE ALL DATAS
+            onPress;
             Navigator.pop(context);
           },
           child: const Text('Finish'),
         ),
       ],
+      centerTitle: true,
     );
   }
 
-  final String title;
-
   @override
-  Size get preferredSize => const Size.fromHeight(40);
+  Size get preferredSize => const Size.fromHeight(45);
 }
