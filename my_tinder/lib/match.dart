@@ -7,6 +7,7 @@ import 'package:my_tinder/views/matches/matches.dart';
 import 'package:my_tinder/views/messages/messages.dart';
 import 'package:my_tinder/views/profile/profile.dart';
 import 'package:my_tinder/themes/app_theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -37,6 +38,34 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   final screens = [Matches(), Messages(), Profile()];
+
+  Future<bool> addProfileToLocaleStore() async {
+    SharedPreferences sPref = await SharedPreferences.getInstance();
+    sPref.setString("username", "John");
+    sPref.setInt("age", 24);
+    sPref.setString("bio", "Positive attitude is the key of success 🔑");
+    sPref.setStringList("images", ["assets/images/main_profile_pic.jpg"]);
+    sPref.setStringList("lifestyles", [
+      "zodiac sign.Aries",
+      "food.Vegan",
+      "pet.Cat",
+      "social network.Unspecified",
+      "sport.Gym",
+      "drinks.Gyn Tonic",
+      "cigarettes.Unspecified"
+    ]);
+    sPref.setStringList("interests", ["Travel", "Sports", "Entrepreneurship", "Globe-trotter"]);
+    sPref.setString("city", "Paris, France");
+    sPref.setString("gender", "Male");
+    sPref.setString("orientation", "Hetero");
+    return true;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    addProfileToLocaleStore().then((value) => print("value: $value"));
+  }
 
   void _onItemTapped(int index) {
     setState(() {

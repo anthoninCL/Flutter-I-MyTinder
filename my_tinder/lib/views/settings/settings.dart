@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_tinder/themes/app_theme.dart';
 import 'package:my_tinder/views/components/section_item/range_slider_item.dart';
 import 'package:my_tinder/views/components/section_item/selection_item.dart';
 import 'package:my_tinder/views/components/section_item/simple_item.dart';
@@ -19,6 +20,23 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Settings"),
+        backgroundColor: AppTheme.colors.white,
+        foregroundColor: AppTheme.colors.black,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: Center(
+              child: GestureDetector(
+                onTap: () => print("Todo!"),
+                child: Text("Finish", style: TextStyle(color: AppTheme.colors.primary, fontSize: 16),),
+              ),
+            ),
+          )
+        ],
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: Center(
             child: ListView(
@@ -68,10 +86,6 @@ class _SettingsState extends State<Settings> {
                       SimpleSectionItem("Privacy policy"),
                       SimpleSectionItem("Terms of use"),
                     ]
-                ),
-                TextButton(onPressed: () {
-                  Navigator.pop(context);
-                }, child: const Text("Go back")
                 ),
               ],
             )
