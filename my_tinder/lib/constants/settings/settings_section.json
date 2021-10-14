@@ -1,0 +1,137 @@
+/*{
+  "settings": [
+    {
+      "selection": [
+        {
+          "settings": [
+            {
+              "title": "Phone number",
+              "value": "",
+              "type": "select"
+            },
+            {
+              "title": "Email adress",
+              "value": "",
+              "type": "select"
+            }
+          ]
+        },
+        {
+          "preferences": [
+            {
+              "title": "Location",
+              "value": "Current location",
+              "type": "select"
+            },
+            {
+              "title": "Maximal distance",
+              "value": [
+                10
+              ],
+              "type": "slider"
+            },
+            {
+              "title": "I want to meet...",
+              "value": "",
+              "type": "select"
+            },
+            {
+              "title": "Age",
+              "value": [
+                18,
+                25
+              ],
+              "type": "slider"
+            },
+            {
+              "title": "Dark theme",
+              "value": false,
+              "type": "switch"
+            }
+          ]
+        },
+        {
+          "legal_notice": [
+            {
+              "title": "Privacy policy",
+              "value": "",
+              "type": "simple"
+            },
+            {
+              "title": "Terms of use",
+              "value": "",
+              "type": "simple"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modals": [
+        {
+          "settings": [
+            {
+              "title": "Enter your phone number",
+              "description": "",
+              "value": "",
+              "type": "text"
+            },
+            {
+              "title": "Enter your email address",
+              "description": "",
+              "value": "",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "preferences": [
+            {
+              "title": "Enter your current location",
+              "description": "",
+              "value": "",
+              "type": "text"
+            },
+            {
+              "title": "Maximal distance",
+              "description": "",
+              "value": [],
+              "type": "slider"
+            },
+            {
+              "title": "Chose the gender of the personn you want to meet",
+              "description": "",
+              "value": ["men", "girl", "both"],
+              "type": "select"
+            },
+            {
+              "title": "Age",
+              "value": [18, 25],
+              "type": "slider"
+            },
+            {
+              "title": "Dark theme",
+              "value": false,
+              "type": "switch"
+            }
+          ]
+        },
+        {
+          "legal_notice": [
+            {
+              "title": "Privacy policy",
+              "value": "",
+              "type": "simple"
+            },
+            {
+              "title": "Terms of use",
+              "value": "",
+              "type": "simple"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+*/
