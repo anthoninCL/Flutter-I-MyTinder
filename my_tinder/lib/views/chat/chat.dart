@@ -14,15 +14,17 @@ class Chat extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(100.0),
+          preferredSize: Size.fromHeight(MediaQuery.of(context).size.height * 0.12),
           child: ConversationHeader(
             image: conversation.image,
             name: conversation.name,
           ),
         ),
-        body: Stack(
+        body: Column(
           children: [
-            ChatList(conversation: conversation),
+            Expanded(
+                child: ChatList(conversation: conversation)
+            ),
             const ChatBottomBar()
           ],
         ),

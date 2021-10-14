@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_tinder/shared/widgets/clickable_avatar.dart';
 import 'package:my_tinder/themes/app_theme.dart';
@@ -15,7 +16,8 @@ class ConversationHeader extends StatelessWidget {
       automaticallyImplyLeading: false,
       backgroundColor: Colors.white,
       flexibleSpace: SafeArea(
-        child: Row(
+        child: MediaQuery.of(context).orientation == Orientation.portrait
+            ? Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Expanded(
@@ -39,7 +41,29 @@ class ConversationHeader extends StatelessWidget {
             ),
             Expanded(child: Container(width: 24,))
           ],
-        ),
+        )
+        : Row(
+          children: [
+            IconButton(
+              onPressed: (){
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                  Icons.arrow_back,
+                  color: AppTheme.colors.primary
+              ),
+            ),const SizedBox(width: 20),
+            ClickableAvatar(image: image, radius: 20),
+            const SizedBox(width: 10),
+            Text(
+              name,
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 16
+              ),
+            )
+          ],
+        )
       ),
     );
   }
