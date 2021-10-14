@@ -53,7 +53,7 @@ class ConversationHeader extends StatelessWidget {
                   color: AppTheme.colors.primary
               ),
             ),const SizedBox(width: 20),
-            ClickableAvatar(image: image, radius: 20),
+            ClickableAvatar(image: image, radius: 18),
             const SizedBox(width: 10),
             Text(
               name,
