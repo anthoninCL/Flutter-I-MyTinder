@@ -20,15 +20,13 @@ class Chat extends StatelessWidget {
             name: conversation.name,
           ),
         ),
-        body: SafeArea(
-          child: Column(
-            children: [
-              Expanded(
-                  child: ChatList(conversation: conversation)
-              ),
-              const ChatBottomBar()
-            ],
-          ),
+        body: Column(
+          children: [
+            Expanded(
+                child: ChatList(conversation: conversation)
+            ),
+            const ChatBottomBar()
+          ],
         ),
     );
   }

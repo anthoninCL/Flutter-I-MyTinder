@@ -12,23 +12,25 @@ class ChatList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      reverse: true,
-      itemCount: conversation.conversation.length,
-      padding: const EdgeInsets.only(top: 10,bottom: 10),
-      itemBuilder: (context, i){
-        int index = conversation.conversation.length - 1 - i;
+    return SafeArea(
+      child: ListView.builder(
+        reverse: true,
+        itemCount: conversation.conversation.length,
+        padding: const EdgeInsets.only(top: 10,bottom: 10),
+        itemBuilder: (context, i){
+          int index = conversation.conversation.length - 1 - i;
 
-        return MessageCard(
-            index: index,
-            conversation: conversation.conversation,
-            profileImage: conversation.image,
-            isPrevMessageFromSameSender: isPrevMessageFromSameSender(index, conversation),
-            isPrevMessageFromSameTime: isPrevMessageFromSameTime(index, conversation),
-            isNextMessageFromSameSender: isNextMessageFromSameSender(index, conversation),
-            isNextMessageFromSameTime: isNextMessageFromSameTime(index, conversation)
-        );
-      },
+          return MessageCard(
+              index: index,
+              conversation: conversation.conversation,
+              profileImage: conversation.image,
+              isPrevMessageFromSameSender: isPrevMessageFromSameSender(index, conversation),
+              isPrevMessageFromSameTime: isPrevMessageFromSameTime(index, conversation),
+              isNextMessageFromSameSender: isNextMessageFromSameSender(index, conversation),
+              isNextMessageFromSameTime: isNextMessageFromSameTime(index, conversation)
+          );
+        },
+      ),
     );
   }
 }
