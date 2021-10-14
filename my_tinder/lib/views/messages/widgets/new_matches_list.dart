@@ -42,11 +42,14 @@ class NewMatchesList extends StatelessWidget {
             if (index == matches.length) {
               return const SizedBox(width: 5.0);
             } else {
-              return ClickableAvatar(
-                image: matches[index].image,
-                radius: 40,
-                name: matches[index].name,
-                onTap: () => onTap(context, index),
+              return Padding(
+                padding: EdgeInsets.only(left: index == 0 ? 10.0 : 0),
+                child: ClickableAvatar(
+                  image: matches[index].image,
+                  radius: 40,
+                  name: matches[index].name,
+                  onTap: () => onTap(context, index),
+                ),
               );
             }
           }
