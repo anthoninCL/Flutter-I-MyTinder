@@ -20,13 +20,16 @@ class ProfileCardPortrait extends StatelessWidget {
   Widget build(BuildContext context) {
     return FittedBox(
         fit: BoxFit.fill,
-        child: Stack(alignment: AlignmentDirectional.bottomCenter, children: [
+        child: Stack(children: [
           Image.asset(
             profile.images[0],
+            fit: BoxFit.cover,
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width - 20,
-            height: MediaQuery.of(context).size.height - 40,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             child: Column(
               children: [
                 ProfileCardPortraitHeader(profile: profile,),

@@ -31,7 +31,7 @@ class _ProfileListState extends State<ProfileList> {
           scrollDirection: Axis.vertical,
           controller: controller,
           padding: EdgeInsets.zero,
-          //physics: const NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           children: [
             ...List.generate(
                 Constants.matches.length,

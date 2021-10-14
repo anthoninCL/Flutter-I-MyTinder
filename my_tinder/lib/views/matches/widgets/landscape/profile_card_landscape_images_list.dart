@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:my_tinder/constants/matches.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
 
 class ProfileCardLandscapeImagesList extends StatelessWidget {
   final Match profile;
-  final AutoScrollController controller;
 
   const ProfileCardLandscapeImagesList(
-      {Key? key, required this.profile, required this.controller})
+      {Key? key, required this.profile})
       : super(key: key);
 
   @override
