@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_tinder/themes/app_theme.dart';
 import 'package:my_tinder/views/components/dismiss_keyboard.dart';
+import 'package:my_tinder/views/components/header_bar.dart';
 import 'package:my_tinder/views/components/section_item/icon_item.dart';
 import 'package:my_tinder/views/components/section_item/simple_selection_item.dart';
 import 'package:my_tinder/views/components/section_item/text_input_item.dart';
@@ -19,23 +19,7 @@ class _ProfileEditState extends State<ProfileEdit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Informations"),
-        backgroundColor: AppTheme.colors.white,
-        foregroundColor: AppTheme.colors.black,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: Center(
-              child: GestureDetector(
-                onTap: () => print("Todo!"),
-                child: Text("Finish", style: TextStyle(color: AppTheme.colors.primary, fontSize: 16),),
-              ),
-            ),
-          )
-        ],
-        centerTitle: true,
-      ),
+      appBar: HeaderBar(title: "Informations", onPress: () => print("test"),),
       body: DismissKeyboard(
         child: Scaffold(
           body: SafeArea(
