@@ -50,10 +50,10 @@ class _MyHomePageState extends State<MyHomePage> {
     sPref.setInt("range", 10);
     sPref.setString("bio", "Positive attitude is the key of success 🔑");
     sPref.setStringList("images", ["assets/images/main_profile_pic.jpg"]);
-    sPref.setString("zodiacSign", "Aries");
+    sPref.setString("zodiac sign", "Aries");
     sPref.setString("food", "Vegan");
     sPref.setString("pet", "Cat");
-    sPref.setString("socialNetwork", "Unspecified");
+    sPref.setString("social network", "Unspecified");
     sPref.setString("sport", "Gym");
     sPref.setString("drinks", "Gyn Tonic");
     sPref.setString("cigarettes", "Unspecified");

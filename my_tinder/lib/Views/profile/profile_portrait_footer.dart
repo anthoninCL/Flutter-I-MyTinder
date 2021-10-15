@@ -5,10 +5,10 @@ import 'package:my_tinder/shared/widgets/button.dart';
 import 'package:my_tinder/themes/app_theme.dart';
 
 class ProfilePortraitFooter extends StatefulWidget {
-  final ValueNotifier<ProfileModel?> profile;
+  ValueNotifier<ProfileModel?> profile;
   final Function showPicker;
 
-  const ProfilePortraitFooter({
+  ProfilePortraitFooter({
     Key? key,
     required this.profile,
     required this.showPicker,
@@ -43,7 +43,7 @@ class _ProfilePortraitFooterState extends State<ProfilePortraitFooter> {
         ),
         SystemSoundType.click,
         context,
-        widget.profile.value!);
+        widget.profile);
     settingsButton = SettingsButton(
         Icon(
           Icons.settings,
@@ -53,22 +53,22 @@ class _ProfilePortraitFooterState extends State<ProfilePortraitFooter> {
         SystemSoundType.click,
         context,
         widget.profile);
+
     return Padding(
-      padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height / 8),
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            buildProfileDescription(
-                name: widget.profile.value!.username,
-                age: widget.profile.value!.age,
-                description: widget.profile.value!.bio),
-            buildChoiceRow(),
-          ],
-        ),
-      ),
-    );
+        padding:
+            EdgeInsets.only(bottom: MediaQuery.of(context).size.height / 8),
+        child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildProfileDescription(
+                    name: widget.profile.value!.username,
+                    age: widget.profile.value!.age,
+                    description: widget.profile.value!.bio),
+                buildChoiceRow(),
+              ],
+            )));
   }
 
   Widget buildProfileDescription(

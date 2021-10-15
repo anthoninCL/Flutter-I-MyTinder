@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_tinder/constants/messages.dart';
-import 'package:my_tinder/constants/new_matches.dart';
+import 'package:my_tinder/Models/messages.dart';
+import 'package:my_tinder/Models/new_matches.dart';
 import 'package:my_tinder/shared/widgets/search_bar.dart';
 import 'package:my_tinder/themes/app_theme.dart';
 import 'package:my_tinder/constants/index.dart';

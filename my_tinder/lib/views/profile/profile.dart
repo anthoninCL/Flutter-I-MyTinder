@@ -1,9 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:my_tinder/Models/profile.dart';
 import 'package:my_tinder/views/profile/profile_portrait_footer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:io';
 
 Future<ProfileModel> loadProfile() async {
   SharedPreferences s = await SharedPreferences.getInstance();
@@ -17,14 +18,15 @@ Future<ProfileModel> loadProfile() async {
       s.getString("wantToMeet") ?? "Girls",
       s.getInt("range") ?? 10,
       s.getStringList("images") ?? ["assets/images/main_profile_pic.jpg"],
-      s.getString("zodiacSign") ?? "Aries",
+      s.getString("zodiac sign") ?? "Aries",
       s.getString("food") ?? "Vegan",
       s.getString("pet") ?? "Cat",
-      s.getString("socialNetwork") ?? "Facebook",
+      s.getString("social network") ?? "Facebook",
       s.getString("sport") ?? "Gym",
       s.getString("drinks") ?? "Gin and Tonic",
       s.getString("cigarettes") ?? "Unspecified",
-      s.getStringList("interests") ?? ["Travel", "Sports", "Entrepreneurship", "Globe-trotter"],
+      s.getStringList("interests") ??
+          ["Travel", "Sports", "Entrepreneurship", "Globe-trotter"],
       s.getString("city") ?? "Paris, France",
       s.getString("gender") ?? "Male",
       s.getString("orientation") ?? "Hetero");
@@ -80,16 +82,14 @@ class _ProfileState extends State<Profile> {
               ],
             ),
           );
-        }
-    );
+        });
   }
 
   imgFromCamera() async {
     SharedPreferences s = await SharedPreferences.getInstance();
 
-    XFile? image = await _picker.pickImage(
-        source: ImageSource.camera, imageQuality: 50
-    );
+    XFile? image =
+        await _picker.pickImage(source: ImageSource.camera, imageQuality: 50);
     if (image != null) {
       profile.value!.images[0] = image.path;
       s.setStringList("images", profile.value!.images);
@@ -102,9 +102,8 @@ class _ProfileState extends State<Profile> {
   imgFromGallery() async {
     SharedPreferences s = await SharedPreferences.getInstance();
 
-    XFile? image = await _picker.pickImage(
-        source: ImageSource.gallery, imageQuality: 50
-    );
+    XFile? image =
+        await _picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
     if (image != null) {
       profile.value!.images[0] = image.path;
       s.setStringList("images", profile.value!.images);
@@ -118,42 +117,51 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return isLoading
         ? const Center(child: CircularProgressIndicator())
-        : Stack(children: [
-            _image != null ? Image.file(File(_image!.path), fit: BoxFit.cover,
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,) : Image.asset(
-              profile.value!.images[0],
-              fit: BoxFit.cover,
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        profile.value!.city,
-                        style: const TextStyle(
-                            fontSize: 25,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700),
-                      ),
-                      const Spacer(),
-                      ProfilePortraitFooter(
-                        profile: profile,
-                        showPicker: () => showPicker(context),
+        : ValueListenableBuilder<ProfileModel?>(
+            valueListenable: profile,
+            builder: (context, value, child) {
+              return Stack(children: [
+                _image != null
+                    ? Image.file(
+                        File(profile.value!.images[0]),
+                        fit: BoxFit.cover,
+                        height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width,
                       )
-                    ],
+                    : Image.asset(
+                        profile.value!.images[0],
+                        fit: BoxFit.cover,
+                        height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width,
+                      ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            profile.value!.city,
+                            style: const TextStyle(
+                                fontSize: 25,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700),
+                          ),
+                          const Spacer(),
+                          ProfilePortraitFooter(
+                            profile: profile,
+                            showPicker: () => showPicker(context),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ]);
+              ]);
+            });
   }
 }

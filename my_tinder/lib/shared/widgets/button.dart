@@ -55,7 +55,7 @@ class EditButton implements Button {
 
   BuildContext context;
 
-  ProfileModel profile;
+  ValueNotifier<ProfileModel?> profile;
 
   EditButton(this.icon, this.sound, this.context, this.profile);
 
@@ -71,7 +71,7 @@ class EditButton implements Button {
   void onPress() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const ProfileEdit()),
+      MaterialPageRoute(builder: (context) => ProfileEdit(profile: profile)),
     );
   }
 }
