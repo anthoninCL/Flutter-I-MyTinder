@@ -61,14 +61,13 @@ class _MyHomePageState extends State<MyHomePage> {
     sPref.setString("city", "Paris, France");
     sPref.setString("gender", "Male");
     sPref.setString("orientation", "Hetero");
-    print("ECRIT DNA SLE FDP");
     return true;
   }
 
   @override
   void initState() {
     super.initState();
-    addProfileToLocaleStore().then((value) => print("value: $value"));
+    addProfileToLocaleStore().then((value) => print("Finished to write profile in LocalStore"));
   }
 
   void _onItemTapped(int index) {

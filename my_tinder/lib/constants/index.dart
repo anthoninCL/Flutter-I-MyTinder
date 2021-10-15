@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_tinder/Models/messages.dart';
-import 'package:my_tinder/Models/new_matches.dart';
+import 'package:my_tinder/models/messages.dart';
+import 'package:my_tinder/models/new_matches.dart';
 
 @immutable
 class Constants {

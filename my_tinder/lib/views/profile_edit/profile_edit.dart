@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_tinder/Models/lifestyle.dart';
-import 'package:my_tinder/Models/profile.dart';
+import 'package:my_tinder/models/lifestyle.dart';
+import 'package:my_tinder/models/profile.dart';
 import 'package:my_tinder/views/components/dismiss_keyboard.dart';
 import 'package:my_tinder/views/components/header_bar.dart';
 import 'package:my_tinder/views/components/section_item/icon_item.dart';

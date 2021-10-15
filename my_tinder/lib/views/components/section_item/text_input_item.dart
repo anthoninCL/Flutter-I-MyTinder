@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_tinder/Models/profile.dart';
+import 'package:my_tinder/models/profile.dart';
 
 class TextInputSectionItem extends StatefulWidget {
   ValueNotifier<ProfileModel?> profile;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:my_tinder/Models/profile.dart';
+import 'package:my_tinder/models/profile.dart';
 import 'package:my_tinder/themes/app_theme.dart';
 import 'package:my_tinder/views/profile_edit/profile_edit.dart';
 import 'package:my_tinder/views/settings/settings.dart';

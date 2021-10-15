@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_tinder/Models/new_matches.dart';
+import 'package:my_tinder/models/new_matches.dart';
 import 'package:my_tinder/shared/widgets/clickable_avatar.dart';
 
 class NewMatchesList extends StatelessWidget {

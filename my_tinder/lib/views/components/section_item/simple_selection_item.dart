@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:my_tinder/Models/profile.dart';
+import 'package:my_tinder/models/profile.dart';
 import 'package:my_tinder/themes/app_theme.dart';
 
 class SimpleSelectionSectionItem extends StatefulWidget {

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:my_tinder/Models/profile.dart';
+import 'package:my_tinder/models/profile.dart';
 import 'package:my_tinder/views/profile/profile_portrait_footer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
