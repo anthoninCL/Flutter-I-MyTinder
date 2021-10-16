@@ -30,7 +30,6 @@ class _IconSectionItemState extends State<IconSectionItem> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // TODO: Open la bonne modale + renvoyer la valeur set dans la modale
         onTap: () {
           bottomModal(context, widget.modalTitle, widget.list, widget.setState);
         },

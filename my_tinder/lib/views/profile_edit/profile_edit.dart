@@ -133,73 +133,73 @@ class _ProfileEditState extends State<ProfileEdit> {
     return [
       TilesButton(
         title: 'Aries',
-        value: widget.profile.value!.zodiacSign,
+        value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
       ),
       TilesButton(
         title: 'Taurus',
-        value: widget.profile.value!.zodiacSign,
+        value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
       ),
       TilesButton(
         title: 'Gemini',
-        value: widget.profile.value!.zodiacSign,
+        value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
       ),
       TilesButton(
         title: 'Cancer',
-        value: widget.profile.value!.zodiacSign,
+        value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
       ),
       TilesButton(
         title: 'Leo',
-        value: widget.profile.value!.zodiacSign,
+        value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
       ),
       TilesButton(
         title: 'Virgo',
-        value: widget.profile.value!.zodiacSign,
+        value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
       ),
       TilesButton(
         title: 'Libra',
-        value: widget.profile.value!.zodiacSign,
+        value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
       ),
       TilesButton(
         title: 'Scorpio',
-        value: widget.profile.value!.zodiacSign,
+        value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
       ),
       TilesButton(
         title: 'Sagittarius',
-        value: widget.profile.value!.zodiacSign,
+        value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
       ),
       TilesButton(
         title: 'Capricorn',
-        value: widget.profile.value!.zodiacSign,
+        value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
       ),
       TilesButton(
         title: 'Aquarius',
-        value: widget.profile.value!.zodiacSign,
+        value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
       ),
       TilesButton(
         title: 'Piscies',
-        value: widget.profile.value!.zodiacSign,
+        value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
       ),
@@ -383,11 +383,6 @@ class _ProfileEditState extends State<ProfileEdit> {
     widget.profile.value = profile;
     s.setString("bio", widget.profile.value!.bio);
     s.setStringList("interests", widget.profile.value!.interests);
-/*    for (var item in lifestyleList) {
-      var lifestyle = Lifestyle(item.icon, item.title, item.value, item.modalTitle, item.list, item.setState);
-
-      s.setString(lifestyle.title, lifestyle.value);
-    }*/
     s.setString("city", widget.profile.value!.city);
     s.setString("gender", widget.profile.value!.gender);
     s.setString("orientation", widget.profile.value!.orientation);
@@ -479,7 +474,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                     Section(itemList: [
                       const TitleSectionItem("LIFESTYLE"),
                       Column(
-                        children: lifestyleList.map((lifestyle) {
+                        children: getLifestyles().map((lifestyle) {
                           return IconSectionItem(
                             icon: lifestyle.icon,
                             title: lifestyle.title,
@@ -491,16 +486,6 @@ class _ProfileEditState extends State<ProfileEdit> {
                         }).toList(),
                       )
                     ]),
-                    Section(
-                      itemList: [
-                        const TitleSectionItem("CITY"),
-                        SimpleSelectionSectionItem(
-                          profile: widget.profile,
-                          value: widget.profile.value!.city,
-                          onSubmit: () => print("TODO"), // TODO: use the modal
-                        )
-                      ],
-                    ),
                     Section(
                       itemList: [
                         const TitleSectionItem("GENDER"),
