@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_tinder/views/matches/widgets/profiles_list.dart';
 
 class Matches extends StatefulWidget {
   const Matches({Key? key}) : super(key: key);
@@ -8,10 +9,12 @@ class Matches extends StatefulWidget {
 }
 
 class _MatchesState extends State<Matches> {
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(child: Text("Matches")),
+      extendBody: true,
+      body: ProfileList(),
     );
   }
 }

@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:my_tinder/constants/matches.dart';
 import 'package:my_tinder/constants/messages.dart';
 import 'package:my_tinder/constants/new_matches.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 @immutable
 class Constants {
+  
+  static List<Match> matches = [
+    Match("Anne Laure", ["assets/images/match1.jpg", "assets/images/profile_pic_5.jpg", "assets/images/profile_pic_6.jpg", "assets/images/profile_pic_8.jpg", "assets/images/profile_pic_9.jpg", "assets/images/profile_pic_10.jpg"], 22, "Travel, Sport and food, Only god can judge me...", "Paris", "2km", ["Travel, Globe-Trotter, Photo Shooting, Mode, Shopping"], [Lifestyle("Zodiac Sign", MdiIcons.weatherNight, "Aries"), Lifestyle("Food", MdiIcons.foodForkDrink, "Italian"), Lifestyle("Pet", MdiIcons.pawOutline, "Cat"), Lifestyle("Social Network", MdiIcons.web, "Instagram"), Lifestyle("Sport", MdiIcons.basketball, "Regular at the gym"), Lifestyle("Cigarettes", MdiIcons.cigar, "Unspecified")]),
+    Match("Vanessa", ["assets/images/match2.jpg", "assets/images/profile_pic_5.jpg", "assets/images/profile_pic_6.jpg", "assets/images/profile_pic_8.jpg", "assets/images/profile_pic_9.jpg", "assets/images/profile_pic_10.jpg"], 24, "Travel, Sport and food, Only god can judge me...", "Paris", "8km", ["Travel, Globe-Trotter, Photo Shooting, Mode, Shopping"], [Lifestyle("Zodiac Sign", MdiIcons.weatherNight, "Aries"), Lifestyle("Food", MdiIcons.foodForkDrink, "Vegan"), Lifestyle("Pet", MdiIcons.pawOutline, "Cat"), Lifestyle("Social Network", MdiIcons.web, "Instagram"), Lifestyle("Sport", MdiIcons.basketball, "Regular at the gym"), Lifestyle("Cigarettes", MdiIcons.cigar, "Unspecified")]),
+    Match("Veronica", ["assets/images/match3.jpg", "assets/images/profile_pic_5.jpg", "assets/images/profile_pic_6.jpg", "assets/images/profile_pic_8.jpg", "assets/images/profile_pic_9.jpg", "assets/images/profile_pic_10.jpg"], 20, "Travel, Sport and food, Only god can judge me...", "Paris", "13km", ["Travel, Globe-Trotter, Photo Shooting, Mode, Shopping"], [Lifestyle("Zodiac Sign", MdiIcons.weatherNight, "Aries"), Lifestyle("Food", MdiIcons.foodForkDrink, "Vegan"), Lifestyle("Pet", MdiIcons.pawOutline, "Cat"), Lifestyle("Social Network", MdiIcons.web, "Instagram"), Lifestyle("Sport", MdiIcons.basketball, "Regular at the gym"), Lifestyle("Cigarettes", MdiIcons.cigar, "Unspecified")]),
+    Match("Alexia", ["assets/images/match4.jpg", "assets/images/profile_pic_5.jpg", "assets/images/profile_pic_6.jpg", "assets/images/profile_pic_8.jpg", "assets/images/profile_pic_9.jpg", "assets/images/profile_pic_10.jpg"], 26, "Travel, Sport and food, Only god can judge me...", "Paris", "400m", ["Travel, Globe-Trotter, Photo Shooting, Mode, Shopping"], [Lifestyle("Zodiac Sign", MdiIcons.weatherNight, "Aries"), Lifestyle("Food", MdiIcons.foodForkDrink, "Vegan"), Lifestyle("Pet", MdiIcons.pawOutline, "Cat"), Lifestyle("Social Network", MdiIcons.web, "Instagram"), Lifestyle("Sport", MdiIcons.basketball, "Regular at the gym"), Lifestyle("Cigarettes", MdiIcons.cigar, "Unspecified")]),
+  ];
+  
   static List<NewMatches> newMatches = [
     NewMatches("Marine", "assets/images/profile_pic_1.jpg"),
     NewMatches("Paula", "assets/images/profile_pic_2.jpg"),
