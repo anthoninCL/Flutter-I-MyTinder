@@ -4,6 +4,8 @@ import 'package:my_tinder/themes/app_theme.dart';
 import 'package:my_tinder/views/profile_details/widgets/lifestyles.dart';
 import 'package:my_tinder/views/profile_details/widgets/localization.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:my_tinder/shared/widgets/button.dart';
+import 'package:flutter/services.dart';
 
 class LifeStyle {
   final String name;
@@ -38,8 +40,32 @@ const profilePictures = [
   "assets/images/profile_pic_10.jpg",
 ];
 
-class ProfileDescription extends StatelessWidget {
+class ProfileDescription extends StatefulWidget {
+  @override
+  State<ProfileDescription> createState() => _ProfileDescription();
+
   const ProfileDescription({Key? key}) : super(key: key);
+}
+
+class _ProfileDescription extends State<ProfileDescription> {
+  late MatchButton skipButton;
+  late MatchButton likeButton;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Initialise buttons
+    skipButton = MatchButton(const Icon(Icons.close, color: Colors.black),
+        SystemSoundType.alert, widget.controller, 5);
+    likeButton = MatchButton(
+        Icon(Icons.favorite_outline, size: 25, color: AppTheme.colors.primary),
+        SystemSoundType.alert,
+        widget.controller,
+        5);
+  }
+
+  Widget buildMatchButton(MatchButton button) => button.buildButton();
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +150,16 @@ class ProfileDescription extends StatelessWidget {
             );
           }).toList(),
         ),
+        buildChoiceRow(index: 5),
       ],
     );
   }
+
+  Widget buildChoiceRow({required index}) => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          buildMatchButton(skipButton),
+          buildMatchButton(likeButton),
+        ],
+      );
 }

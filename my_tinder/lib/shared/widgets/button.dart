@@ -35,8 +35,8 @@ class MatchButton implements Button {
 
   @override
   Widget buildButton() => FloatingActionButton(
-    onPressed: onPress,
-    child: icon,
-    backgroundColor: Colors.white,
-  );
+        onPressed: onPress,
+        child: icon,
+        backgroundColor: Colors.white,
+      );
 }
