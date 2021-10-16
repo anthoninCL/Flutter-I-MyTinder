@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_tinder/constants/messages.dart';
+import 'package:my_tinder/models/messages.dart';
 import 'package:my_tinder/shared/widgets/clickable_avatar.dart';
 import 'package:my_tinder/views/chat/widgets/message_bubble.dart';
 import 'package:my_tinder/views/chat/widgets/message_time.dart';

@@ -1,4 +1,4 @@
-import 'package:my_tinder/constants/messages.dart';
+import 'package:my_tinder/models/messages.dart';
 
 bool isLastMessage(int index, Conversation conversation) {
   return index + 1 == conversation.conversation.length;

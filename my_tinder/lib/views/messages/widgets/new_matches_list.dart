@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_tinder/models/messages.dart';
 import 'package:my_tinder/models/new_matches.dart';
 import 'package:my_tinder/shared/widgets/clickable_avatar.dart';
 import 'package:my_tinder/views/chat/chat.dart';
