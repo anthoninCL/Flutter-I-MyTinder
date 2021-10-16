@@ -87,10 +87,7 @@ class _MessagesState extends State<Messages> {
               SizedBox(
                 height: newMatchesDataList.isEmpty ? 50.0 : 120.0,
                 width: double.infinity,
-                child: Padding(
-                  padding: newMatchesDataList.isEmpty ? const EdgeInsets.only(left: 0) : const EdgeInsets.only(left: 10),
-                  child: NewMatchesList(matches: newMatchesDataList),
-                )
+                child: NewMatchesList(matches: newMatchesDataList)
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 10, bottom: 20),

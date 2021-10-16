@@ -59,30 +59,26 @@ class MessageItem extends StatelessWidget {
                             ),
                             Row(
                               mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 if (lastMessage.sendByMe) Padding(
-                                  padding: const EdgeInsets.only(top: 5,right: 10.0),
-                                  child: Container(
-                                    width: 10,
-                                    height: 10,
-                                      decoration: BoxDecoration(
-                                        color: AppTheme.colors.primary,
-                                        shape: BoxShape.circle,
-                                      )
-                                  ),
+                                  padding: const EdgeInsets.only(right: 10.0),
+                                  child: Icon(Icons.reply, color: AppTheme.colors.grey, size: 20,)
                                 ),
                                 SizedBox(
                                   width: MediaQuery.of(context).size.width * 0.65,
-                                  child: Text(
-                                    lastMessage.content,
-                                    maxLines: 2,
-                                    style: TextStyle(
-                                      color: AppTheme.colors.grey,
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.normal,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(top: lastMessage.sendByMe ? 2.0 : 0.0),
+                                    child: Text(
+                                      lastMessage.content,
+                                      maxLines: 2,
+                                      style: TextStyle(
+                                        color: AppTheme.colors.grey,
+                                        fontSize: 16.0,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                      overflow: TextOverflow.ellipsis,
                                     ),
-                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                               ],
