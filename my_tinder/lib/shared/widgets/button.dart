@@ -30,6 +30,7 @@ class MatchButton implements Button {
   @override
   void onPress() {
     _scrollToIndex();
+    SystemSound.play(sound);
   }
 
   Future _scrollToIndex() async {
