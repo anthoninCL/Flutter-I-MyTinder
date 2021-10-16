@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:my_tinder/themes/app_theme.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 abstract class Button {
@@ -18,17 +19,19 @@ class MatchButton implements Button {
   @override
   SystemSoundType sound;
 
-  @override
-  VoidCallback onClick;
+  VoidCallback? onClick;
 
   AutoScrollController controller;
   int index;
 
-  MatchButton(this.icon, this.sound, this.controller, this.index, this.onClick);
+  MatchButton(this.icon, this.sound, this.controller, this.index,
+      [this.onClick]);
 
   @override
   void onPress() {
-    onClick();
+    if (onClick != null) {
+      onClick!();
+    }
     _scrollToIndex();
     SystemSound.play(sound);
   }
@@ -42,6 +45,42 @@ class MatchButton implements Button {
   Widget buildButton() => FloatingActionButton(
         onPressed: onPress,
         child: icon,
+        backgroundColor: Colors.white,
+      );
+}
+
+class ReturnButton implements Button {
+  @override
+  Icon icon;
+
+  @override
+  SystemSoundType sound;
+
+  BuildContext context;
+
+  ReturnButton(this.icon, this.sound, this.context);
+
+  @override
+  void onPress() {
+    Navigator.pop(context);
+  }
+
+  @override
+  Widget buildButton() => FloatingActionButton(
+        onPressed: onPress,
+        child: Container(
+            width: 56,
+            height: 56,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                colors: [
+                  AppTheme.colors.primary,
+                  AppTheme.colors.secondary,
+                ],
+              ),
+            ),
+            child: icon),
         backgroundColor: Colors.white,
       );
 }

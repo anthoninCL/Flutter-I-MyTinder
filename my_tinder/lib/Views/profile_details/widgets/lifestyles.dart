@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_tinder/views/profile_details/widgets/profile_description.dart';
+import 'package:my_tinder/constants/matches.dart';
 import '../../components/tiles.dart';
 
 class UserLifeStyles extends StatelessWidget {
-  final List<LifeStyle> lifeStyleArray;
+  final List<Lifestyle> lifeStyleArray;
   const UserLifeStyles({Key? key, required this.lifeStyleArray})
       : super(key: key);
 

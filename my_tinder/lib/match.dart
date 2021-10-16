@@ -17,11 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Match',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        textTheme: AppTheme.textStyles,
-        accentColor: AppTheme.colors.primary
-
-      ),
+          primarySwatch: Colors.blue,
+          textTheme: AppTheme.textStyles,
+          accentColor: AppTheme.colors.primary),
       home: const MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
@@ -37,7 +35,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
-  final screens = [Matches(), Messages(), Profile()];
+  final screens = [const Matches(), const Messages(), const Profile()];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -51,27 +49,39 @@ class _MyHomePageState extends State<MyHomePage> {
       extendBody: true,
       body: Center(
           child: IndexedStack(
-            index: _selectedIndex,
-            children: screens,
-          )
-      ),
+        index: _selectedIndex,
+        children: screens,
+      )),
       bottomNavigationBar: _bottomNavigationBar(),
     );
   }
 
   Widget _bottomNavigationBar() => BottomNavigationBar(
-    items: [
-      BottomNavigationBarItem(icon: _selectedIndex == 0 ? SvgPicture.asset("assets/icons/main-icon.svg", height: 22) : SvgPicture.asset("assets/icons/main-icon-outline.svg", height: 22), label: ""),
-      BottomNavigationBarItem(icon: _selectedIndex == 1 ? const Icon(FontAwesomeIcons.solidCommentDots) : const Icon(FontAwesomeIcons.commentDots), label: ""),
-      BottomNavigationBarItem(icon: _selectedIndex == 2 ? const Icon(Icons.person) : const Icon(Icons.person_outline), label: "")
-    ],
-    currentIndex: _selectedIndex,
-    onTap: _onItemTapped,
-    backgroundColor: AppTheme.colors.black40,
-    elevation: 1,
-    selectedItemColor: AppTheme.colors.white,
-    unselectedItemColor: AppTheme.colors.greyLight,
-    // above could be used AppTheme.colors.greyLight
-    // and for a text it will be Theme.of(context).textTheme.headline6,
-  );
+        items: [
+          BottomNavigationBarItem(
+              icon: _selectedIndex == 0
+                  ? SvgPicture.asset("assets/icons/main-icon.svg", height: 22)
+                  : SvgPicture.asset("assets/icons/main-icon-outline.svg",
+                      height: 22),
+              label: ""),
+          BottomNavigationBarItem(
+              icon: _selectedIndex == 1
+                  ? const Icon(FontAwesomeIcons.solidCommentDots)
+                  : const Icon(FontAwesomeIcons.commentDots),
+              label: ""),
+          BottomNavigationBarItem(
+              icon: _selectedIndex == 2
+                  ? const Icon(Icons.person)
+                  : const Icon(Icons.person_outline),
+              label: "")
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        backgroundColor: AppTheme.colors.black40,
+        elevation: 1,
+        selectedItemColor: AppTheme.colors.white,
+        unselectedItemColor: AppTheme.colors.greyLight,
+        // above could be used AppTheme.colors.greyLight
+        // and for a text it will be Theme.of(context).textTheme.headline6,
+      );
 }

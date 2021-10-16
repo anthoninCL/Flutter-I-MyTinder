@@ -3,35 +3,11 @@ import 'package:flutter/widgets.dart';
 import 'package:my_tinder/themes/app_theme.dart';
 import 'package:my_tinder/views/profile_details/widgets/lifestyles.dart';
 import 'package:my_tinder/views/profile_details/widgets/localization.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_tinder/shared/widgets/button.dart';
 import 'package:flutter/services.dart';
+import 'package:my_tinder/views/profile_details/widgets/profile_pictures_list.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-
-class LifeStyle {
-  final String name;
-  final String value;
-  final IconData? icon;
-  final bool isSelected;
-  const LifeStyle(this.name, this.value,
-      [this.isSelected = false, this.icon = MdiIcons.nullIcon]);
-}
-
-const tmpLifeStyles = [
-  LifeStyle("Astrological Sign", "Gemini", false, MdiIcons.weatherNight),
-  LifeStyle("Drink", "Bloody Mary", false, MdiIcons.glassCocktail),
-  LifeStyle("Food", "Italian", false, MdiIcons.foodForkDrink),
-  LifeStyle("Animals", "Cat", false, MdiIcons.paw),
-  LifeStyle("Social Network", "Instagram", false, MdiIcons.web),
-];
-
-const tmpLifeStyles2 = [
-  LifeStyle("Astrological Sign", "Travel", true),
-  LifeStyle("Drink", "Globe-trotter", true),
-  LifeStyle("Food", "Photo shooting"),
-  LifeStyle("Animals", "Mode"),
-  LifeStyle("Social Network", "Shopping"),
-];
+import 'package:my_tinder/constants/matches.dart';
 
 const profilePictures = [
   "assets/images/profile_pic_5.jpg",
@@ -44,6 +20,7 @@ const profilePictures = [
 class ProfileDescription extends StatefulWidget {
   final int index;
   final AutoScrollController controller;
+  final Match profile;
 
   @override
   State<ProfileDescription> createState() => _ProfileDescription();
@@ -52,6 +29,7 @@ class ProfileDescription extends StatefulWidget {
     Key? key,
     required this.controller,
     required this.index,
+    required this.profile,
   }) : super(key: key);
 }
 
@@ -79,6 +57,7 @@ class _ProfileDescription extends State<ProfileDescription> {
   }
 
   Widget buildMatchButton(MatchButton button) => button.buildButton();
+  Widget buildReturnButton(ReturnButton button) => button.buildButton();
 
   @override
   Widget build(BuildContext context) {
@@ -87,40 +66,54 @@ class _ProfileDescription extends State<ProfileDescription> {
         SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset('assets/images/image 1.png',
-                  width: double.infinity,
-                  height: 375,
-                  fit: BoxFit.cover,
-                  alignment: Alignment.topCenter),
+              Stack(
+                children: [
+                  Image.asset(
+                    widget.profile.images[0],
+                    width: double.infinity,
+                    height: 375,
+                    fit: BoxFit.cover,
+                  ),
+                  Align(
+                      alignment: Alignment.bottomRight,
+                      child: Container(
+                        padding: const EdgeInsets.only(right: 20, top: 345),
+                        child: buildReturnButton(ReturnButton(
+                            const Icon(Icons.undo,
+                                color: Colors.white, size: 25),
+                            SystemSoundType.alert,
+                            context)),
+                      )),
+                ],
+              ),
               Container(
                 padding: const EdgeInsets.only(
                   left: 20,
-                  top: 20,
                 ),
                 child: Column(
                   children: [
                     Row(
-                      children: const [
+                      children: [
                         Text(
-                          "Anne Laure",
-                          style: TextStyle(
+                          widget.profile.name,
+                          style: const TextStyle(
                             fontSize: 35,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                         Text(
-                          "25",
-                          style: TextStyle(fontSize: 27),
+                          widget.profile.age.toString(),
+                          style: const TextStyle(fontSize: 27),
                         ),
                       ],
                     ),
-                    const Localization(
-                      location: "Tour Eiffel",
-                      distance: "2km",
+                    Localization(
+                      location: widget.profile.city,
+                      distance: widget.profile.distance,
                     ),
-                    const UserLifeStyles(
-                      lifeStyleArray: tmpLifeStyles,
+                    UserLifeStyles(
+                      lifeStyleArray: widget.profile.lifestyles,
                     ),
                   ],
                 ),
@@ -135,7 +128,7 @@ class _ProfileDescription extends State<ProfileDescription> {
                 padding: const EdgeInsets.only(
                   left: 20,
                 ),
-                child: const UserLifeStyles(lifeStyleArray: tmpLifeStyles2),
+                child: UserLifeStyles(lifeStyleArray: widget.profile.interests),
               ),
               Container(
                 padding: const EdgeInsets.only(top: 10),
@@ -144,7 +137,7 @@ class _ProfileDescription extends State<ProfileDescription> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  "Travel 🛫 Sport and food, Only God can judge me...",
+                  widget.profile.bio,
                   style: TextStyle(fontSize: 16, color: AppTheme.colors.grey),
                 ),
               ),
@@ -154,18 +147,8 @@ class _ProfileDescription extends State<ProfileDescription> {
                 ),
                 child: const Divider(),
               ),
-              Wrap(
-                runSpacing: 4,
-                spacing: 2,
-                children: profilePictures.map((picture) {
-                  return Image.asset(
-                    picture,
-                    width: 125,
-                    height: 125,
-                    fit: BoxFit.cover,
-                  );
-                }).toList(),
-              ),
+              ProfilePicturesList(
+                  images: List.from(widget.profile.images)..removeAt(0)),
             ],
           ),
         ),

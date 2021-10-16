@@ -24,10 +24,12 @@ class ProfileCardPortrait extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => ProfileDetails(
-                    index: index,
-                    controller: controller,
-                  )),
+            builder: (context) => ProfileDetails(
+              index: index,
+              controller: controller,
+              profile: profile,
+            ),
+          ),
         );
       },
       child: FittedBox(
