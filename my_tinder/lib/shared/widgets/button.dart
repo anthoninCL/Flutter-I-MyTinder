@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:my_tinder/models/profile.dart';
+import 'package:my_tinder/themes/app_theme.dart';
+import 'package:my_tinder/views/profile_edit/profile_edit.dart';
+import 'package:my_tinder/views/settings/settings.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 abstract class Button {
@@ -36,8 +40,105 @@ class MatchButton implements Button {
 
   @override
   Widget buildButton() => FloatingActionButton(
-    onPressed: onPress,
-    child: icon,
-    backgroundColor: Colors.white,
+        heroTag: "MatchButton",
+        onPressed: onPress,
+        child: icon,
+        backgroundColor: Colors.white,
+      );
+}
+
+class EditButton implements Button {
+  @override
+  Icon icon;
+
+  @override
+  SystemSoundType sound;
+
+  BuildContext context;
+
+  ValueNotifier<ProfileModel?> profile;
+
+  EditButton(this.icon, this.sound, this.context, this.profile);
+
+  @override
+  Widget buildButton() => FloatingActionButton(
+        heroTag: "EditButton",
+        onPressed: onPress,
+        child: icon,
+        backgroundColor: Colors.white,
+      );
+
+  @override
+  void onPress() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ProfileEdit(profile: profile)),
+    );
+  }
+}
+
+class SettingsButton implements Button {
+  @override
+  Icon icon;
+
+  @override
+  SystemSoundType sound;
+
+  BuildContext context;
+
+  ValueNotifier<ProfileModel?> profile;
+
+  SettingsButton(this.icon, this.sound, this.context, this.profile);
+
+  @override
+  Widget buildButton() => FloatingActionButton(
+        heroTag: "SettingsButton",
+        onPressed: onPress,
+        child: icon,
+        backgroundColor: Colors.white,
+      );
+
+  @override
+  void onPress() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Settings(profile: profile)),
+    );
+  }
+}
+
+class PhotoButton implements Button {
+  @override
+  Icon icon;
+
+  @override
+  SystemSoundType sound;
+
+  Function onPressed;
+
+  PhotoButton(this.icon, this.sound, this.onPressed);
+
+
+  @override
+  Widget buildButton() => Padding(
+    padding: const EdgeInsets.only(top: 8.0),
+    child: GestureDetector(
+      onTap: onPress,
+      child: Container(
+        width: 70.0,
+        height: 70.0,
+        decoration: BoxDecoration(
+          color: AppTheme.colors.primary,
+          shape: BoxShape.circle,
+        ),
+        child: icon,
+      ),
+    ),
   );
+
+  @override
+  void onPress() {
+    onPressed();
+  }
+
 }

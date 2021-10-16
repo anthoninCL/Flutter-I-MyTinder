@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_tinder/constants/messages.dart';
-import 'package:my_tinder/constants/new_matches.dart';
+import 'package:my_tinder/models/messages.dart';
+import 'package:my_tinder/models/new_matches.dart';
 import 'package:my_tinder/shared/widgets/search_bar.dart';
 import 'package:my_tinder/themes/app_theme.dart';
 import 'package:my_tinder/constants/index.dart';
@@ -87,10 +87,7 @@ class _MessagesState extends State<Messages> {
               SizedBox(
                 height: newMatchesDataList.isEmpty ? 50.0 : 120.0,
                 width: double.infinity,
-                child: Padding(
-                  padding: newMatchesDataList.isEmpty ? const EdgeInsets.only(left: 0) : const EdgeInsets.only(left: 10),
-                  child: NewMatchesList(matches: newMatchesDataList),
-                )
+                child: NewMatchesList(matches: newMatchesDataList)
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 10, bottom: 20),
