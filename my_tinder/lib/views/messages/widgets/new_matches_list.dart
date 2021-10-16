@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:my_tinder/constants/messages.dart';
 import 'package:my_tinder/constants/new_matches.dart';
 import 'package:my_tinder/shared/widgets/clickable_avatar.dart';
+import 'package:my_tinder/views/chat/chat.dart';
 
 class NewMatchesList extends StatelessWidget {
   final List<NewMatches> matches;
 
   const NewMatchesList({Key? key, required this.matches}) : super(key: key);
 
-  void printProfileInfo(int index) {
-    // this need to navigate to the right conversation
-    // ignore: avoid_print
-    print(matches[index].name);
+  void onTap(BuildContext context, int index) {
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+      return Chat(conversation: Conversation(matches[index].name, matches[index].image, []));
+    }));
   }
 
   @override
@@ -40,11 +42,14 @@ class NewMatchesList extends StatelessWidget {
             if (index == matches.length) {
               return const SizedBox(width: 5.0);
             } else {
-              return ClickableAvatar(
-                image: matches[index].image,
-                radius: 40,
-                name: matches[index].name,
-                onTap: () => printProfileInfo(index),
+              return Padding(
+                padding: EdgeInsets.only(left: index == 0 ? 10.0 : 0),
+                child: ClickableAvatar(
+                  image: matches[index].image,
+                  radius: 40,
+                  name: matches[index].name,
+                  onTap: () => onTap(context, index),
+                ),
               );
             }
           }
