@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_tinder/models/profile.dart';
+import 'package:my_tinder/shared/widgets/button.dart';
 import 'package:my_tinder/views/components/dismiss_keyboard.dart';
 import 'package:my_tinder/views/components/header_bar.dart';
 import 'package:my_tinder/views/components/section_item/range_slider_item.dart';
 import 'package:my_tinder/views/components/section_item/selection_item.dart';
 import 'package:my_tinder/views/components/section_item/simple_item.dart';
 import 'package:my_tinder/views/components/section_item/slider_item.dart';
-import 'package:my_tinder/views/components/section_item/switch_item.dart';
 import 'package:my_tinder/views/components/section_item/text_field.dart';
 import 'package:my_tinder/views/components/section_item/title_item.dart';
 import 'package:my_tinder/views/widgets/section.dart';
@@ -27,6 +27,8 @@ class _SettingsState extends State<Settings> {
   double range = 10;
   String email = "john.doe@gmail.com";
   String phoneNumber = "0634563945";
+  String wantToMeet = "Woman";
+  String city = "Current location";
 
   @override
   void initState() {
@@ -35,6 +37,8 @@ class _SettingsState extends State<Settings> {
     range = widget.profile.value!.range.toDouble();
     email = widget.profile.value!.email;
     phoneNumber = widget.profile.value!.phoneNumber;
+    wantToMeet = widget.profile.value!.wantToMeet;
+    city = widget.profile.value!.city;
   }
 
   RangeValues getRangeValues() {
@@ -50,12 +54,16 @@ class _SettingsState extends State<Settings> {
     profile.range = range.toInt();
     profile.email = email;
     profile.phoneNumber = phoneNumber;
+    profile.wantToMeet = wantToMeet;
+    profile.city = city;
     widget.profile.value = profile;
     s.setString(
         "ageRange", ageRange.start.toString() + "-" + ageRange.end.toString());
     s.setInt("range", range.toInt());
     s.setString("email", email);
     s.setString("phoneNumber", phoneNumber);
+    s.setString("wantToMeet", wantToMeet);
+    s.setString("city", city);
   }
 
   void setAgeRange(value) => setState(() {
@@ -74,6 +82,14 @@ class _SettingsState extends State<Settings> {
         email = value;
       });
 
+  void setWantToMeet(value) => setState(() {
+    wantToMeet = value;
+  });
+
+  void setCity(value) => setState(() {
+    city = value;
+  });
+
   @override
   Widget build(BuildContext context) {
     return DismissKeyboard(
@@ -91,19 +107,27 @@ class _SettingsState extends State<Settings> {
                   scrollDirection: Axis.vertical,
                   children: [
                     Section(itemList: [
-                      TitleSectionItem("SETTINGS"),
+                      const TitleSectionItem("SETTINGS"),
                       TextFieldSection(
-                          title: "Phone number",
-                          value: phoneNumber,
-                          setState: setPhoneNumber),
+                        title: "Phone number",
+                        value: phoneNumber,
+                        setState: setPhoneNumber,
+                        type: TextInputType.number
+                      ),
                       TextFieldSection(
-                          title: "Email", value: email, setState: setEmail),
+                        title: "Email",
+                        value: email,
+                        setState: setEmail,
+                        type: TextInputType.emailAddress
+                      ),
                     ]),
                     Section(itemList: [
-                      TitleSectionItem("PREFERENCES"),
-                      SelectionSectionItem(
+                      const TitleSectionItem("PREFERENCES"),
+                      TextFieldSection(
                         title: "Location",
-                        value: value!.city,
+                        value: city,
+                        setState: setCity,
+                        type: TextInputType.streetAddress,
                       ),
                       RangeSliderSectionItem(
                         title: "Age",
@@ -111,15 +135,35 @@ class _SettingsState extends State<Settings> {
                         setState: setAgeRange,
                       ),
                       SelectionSectionItem(
-                          title: "I want to meet", value: "Girls"),
+                        title: "I want to meet",
+                        value: wantToMeet,
+                        setState: setWantToMeet,
+                        modalTitle: 'I want to meet',
+                        list: [
+                          TilesButton(
+                            title: 'Man',
+                            value: wantToMeet,
+                            setValue: setWantToMeet,
+                            iconData: Icons.male,
+                          ),
+                          TilesButton(
+                            title: 'Woman',
+                            value: wantToMeet,
+                            setValue: setWantToMeet,
+                            iconData: Icons.female,
+                          ),
+                          TilesButton(
+                            title: 'Other',
+                            value: wantToMeet,
+                            setValue: setWantToMeet,
+                            iconData: Icons.edit,
+                          )
+                        ],
+                      ),
                       SliderSectionItem(
                         title: "Distance",
                         value: range,
                         setState: setRange,
-                      ),
-                      SwitchSectionItem(
-                        title: "Dark Theme",
-                        value: false,
                       ),
                     ]),
                     const Section(itemList: [

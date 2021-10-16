@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_tinder/models/profile.dart';
 import 'package:my_tinder/themes/app_theme.dart';
 import 'package:my_tinder/views/profile_edit/profile_edit.dart';
@@ -139,6 +140,86 @@ class PhotoButton implements Button {
   @override
   void onPress() {
     onPressed();
+  }
+
+}
+
+class TilesButton extends StatelessWidget implements Button {
+  final Function setValue;
+  final String title;
+  final String value;
+  IconData iconData;
+
+  @override
+  late SystemSoundType sound;
+
+  @override
+  late Icon icon;
+
+  TilesButton(
+  {
+    required this.title,
+    required this.value,
+    required this.setValue,
+    required this.iconData
+  });
+
+  @override
+  Widget buildButton() => Padding(
+    padding: const EdgeInsets.only(top: 8.0),
+    child: GestureDetector(
+      onTap: onPress,
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+              color:
+              title == value ? AppTheme.colors.primary : AppTheme.colors.grey),
+          borderRadius: const BorderRadius.all(Radius.circular(15)),
+        ),
+        child: Container(
+          padding: const EdgeInsets.all(6),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (iconData != MdiIcons.nullIcon)
+                Row(
+                  children: [
+                    Icon(
+                      iconData,
+                      color: title == value
+                          ? AppTheme.colors.primary
+                          : AppTheme.colors.grey,
+                      size: 20,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                  ],
+                ),
+              Text(
+                title,
+                style: TextStyle(
+                    color: title == value
+                        ? AppTheme.colors.primary
+                        : AppTheme.colors.grey),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+
+  @override
+  void onPress() {
+    setValue(title);
+    print('onpress button title: $title');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return buildButton();
   }
 
 }
