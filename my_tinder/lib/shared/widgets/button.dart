@@ -18,13 +18,17 @@ class MatchButton implements Button {
   @override
   SystemSoundType sound;
 
+  @override
+  VoidCallback onClick;
+
   AutoScrollController controller;
   int index;
 
-  MatchButton(this.icon, this.sound, this.controller, this.index);
+  MatchButton(this.icon, this.sound, this.controller, this.index, this.onClick);
 
   @override
   void onPress() {
+    onClick();
     _scrollToIndex();
     SystemSound.play(sound);
   }

@@ -38,12 +38,13 @@ class _ProfileCardLandscapeState extends State<ProfileCardLandscape> {
 
     // Initialise buttons
     skipButton = MatchButton(const Icon(Icons.close, color: Colors.black),
-        SystemSoundType.alert, widget.controller, widget.index);
+        SystemSoundType.alert, widget.controller, widget.index, () => {});
     likeButton = MatchButton(
         Icon(Icons.favorite_outline, size: 25, color: AppTheme.colors.primary),
         SystemSoundType.alert,
         widget.controller,
-        widget.index);
+        widget.index,
+        () => {});
   }
 
   Widget buildMatchButton(MatchButton button) => button.buildButton();

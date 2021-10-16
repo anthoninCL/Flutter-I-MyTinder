@@ -6,6 +6,7 @@ import 'package:my_tinder/views/profile_details/widgets/localization.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_tinder/shared/widgets/button.dart';
 import 'package:flutter/services.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
 
 class LifeStyle {
   final String name;
@@ -41,10 +42,17 @@ const profilePictures = [
 ];
 
 class ProfileDescription extends StatefulWidget {
+  final int index;
+  final AutoScrollController controller;
+
   @override
   State<ProfileDescription> createState() => _ProfileDescription();
 
-  const ProfileDescription({Key? key}) : super(key: key);
+  const ProfileDescription({
+    Key? key,
+    required this.controller,
+    required this.index,
+  }) : super(key: key);
 }
 
 class _ProfileDescription extends State<ProfileDescription> {
@@ -56,101 +64,118 @@ class _ProfileDescription extends State<ProfileDescription> {
     super.initState();
 
     // Initialise buttons
-    skipButton = MatchButton(const Icon(Icons.close, color: Colors.black),
-        SystemSoundType.alert, widget.controller, 5);
+    skipButton = MatchButton(
+        const Icon(Icons.close, color: Colors.black),
+        SystemSoundType.alert,
+        widget.controller,
+        widget.index,
+        () => Navigator.pop(context));
     likeButton = MatchButton(
         Icon(Icons.favorite_outline, size: 25, color: AppTheme.colors.primary),
         SystemSoundType.alert,
         widget.controller,
-        5);
+        widget.index,
+        () => Navigator.pop(context));
   }
 
   Widget buildMatchButton(MatchButton button) => button.buildButton();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
-        Image.asset('assets/images/image 1.png',
-            width: double.infinity,
-            height: 375,
-            fit: BoxFit.cover,
-            alignment: Alignment.topCenter),
-        Container(
-          padding: const EdgeInsets.only(
-            left: 20,
-            top: 20,
-          ),
+        SingleChildScrollView(
           child: Column(
             children: [
-              Row(
-                children: const [
-                  Text(
-                    "Anne Laure",
-                    style: TextStyle(
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold,
+              Image.asset('assets/images/image 1.png',
+                  width: double.infinity,
+                  height: 375,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topCenter),
+              Container(
+                padding: const EdgeInsets.only(
+                  left: 20,
+                  top: 20,
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      children: const [
+                        Text(
+                          "Anne Laure",
+                          style: TextStyle(
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(width: 5),
+                        Text(
+                          "25",
+                          style: TextStyle(fontSize: 27),
+                        ),
+                      ],
                     ),
-                  ),
-                  SizedBox(width: 5),
-                  Text(
-                    "25",
-                    style: TextStyle(fontSize: 27),
-                  ),
-                ],
+                    const Localization(
+                      location: "Tour Eiffel",
+                      distance: "2km",
+                    ),
+                    const UserLifeStyles(
+                      lifeStyleArray: tmpLifeStyles,
+                    ),
+                  ],
+                ),
               ),
-              const Localization(
-                location: "Tour Eiffel",
-                distance: "2km",
+              Container(
+                padding: const EdgeInsets.only(
+                  top: 10,
+                ),
+                child: const Divider(),
               ),
-              const UserLifeStyles(
-                lifeStyleArray: tmpLifeStyles,
+              Container(
+                padding: const EdgeInsets.only(
+                  left: 20,
+                ),
+                child: const UserLifeStyles(lifeStyleArray: tmpLifeStyles2),
+              ),
+              Container(
+                padding: const EdgeInsets.only(top: 10),
+                child: const Divider(),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  "Travel 🛫 Sport and food, Only God can judge me...",
+                  style: TextStyle(fontSize: 16, color: AppTheme.colors.grey),
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.only(
+                  top: 10,
+                ),
+                child: const Divider(),
+              ),
+              Wrap(
+                runSpacing: 4,
+                spacing: 2,
+                children: profilePictures.map((picture) {
+                  return Image.asset(
+                    picture,
+                    width: 125,
+                    height: 125,
+                    fit: BoxFit.cover,
+                  );
+                }).toList(),
               ),
             ],
           ),
         ),
-        Container(
-          padding: const EdgeInsets.only(
-            top: 10,
-          ),
-          child: const Divider(),
-        ),
-        Container(
-          padding: const EdgeInsets.only(
-            left: 20,
-          ),
-          child: const UserLifeStyles(lifeStyleArray: tmpLifeStyles2),
-        ),
-        Container(
-          padding: const EdgeInsets.only(top: 10),
-          child: const Divider(),
-        ),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            "Travel 🛫 Sport and food, Only God can judge me...",
-            style: TextStyle(fontSize: 16, color: AppTheme.colors.grey),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            padding: const EdgeInsets.only(bottom: 80),
+            child: buildChoiceRow(index: widget.index),
           ),
         ),
-        Container(
-          padding: const EdgeInsets.only(
-            top: 10,
-          ),
-          child: const Divider(),
-        ),
-        Wrap(
-          runSpacing: 4,
-          spacing: 2,
-          children: profilePictures.map((picture) {
-            return Image.asset(
-              picture,
-              width: 125,
-              height: 125,
-              fit: BoxFit.cover,
-            );
-          }).toList(),
-        ),
-        buildChoiceRow(index: 5),
       ],
     );
   }

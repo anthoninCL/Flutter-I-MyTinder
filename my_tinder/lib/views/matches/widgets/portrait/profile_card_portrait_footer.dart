@@ -18,11 +18,11 @@ class ProfileCardPortraitFooter extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<ProfileCardPortraitFooter> createState() => _ProfileCardPortraitFooterState();
+  State<ProfileCardPortraitFooter> createState() =>
+      _ProfileCardPortraitFooterState();
 }
 
 class _ProfileCardPortraitFooterState extends State<ProfileCardPortraitFooter> {
-
   late MatchButton skipButton;
   late MatchButton likeButton;
 
@@ -31,8 +31,14 @@ class _ProfileCardPortraitFooterState extends State<ProfileCardPortraitFooter> {
     super.initState();
 
     // Initialise buttons
-    skipButton = MatchButton(const Icon(Icons.close, color: Colors.black),  SystemSoundType.alert, widget.controller, widget.index);
-    likeButton = MatchButton(Icon(Icons.favorite_outline, size: 25, color: AppTheme.colors.primary), SystemSoundType.alert, widget.controller, widget.index);
+    skipButton = MatchButton(const Icon(Icons.close, color: Colors.black),
+        SystemSoundType.alert, widget.controller, widget.index, () => {});
+    likeButton = MatchButton(
+        Icon(Icons.favorite_outline, size: 25, color: AppTheme.colors.primary),
+        SystemSoundType.alert,
+        widget.controller,
+        widget.index,
+        () => {});
   }
 
   Widget buildMatchButton(MatchButton button) => button.buildButton();

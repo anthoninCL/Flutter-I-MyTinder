@@ -9,7 +9,6 @@ class Matches extends StatefulWidget {
 }
 
 class _MatchesState extends State<Matches> {
-
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
