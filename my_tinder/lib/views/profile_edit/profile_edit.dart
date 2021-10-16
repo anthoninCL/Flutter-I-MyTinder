@@ -44,7 +44,6 @@ class _ProfileEditState extends State<ProfileEdit> {
     drinks = widget.profile.value!.drinks;
     cigarettes = widget.profile.value!.cigarettes;
     lifestyleList = getLifestyles();
-    print('init state: ${zodiacSign}');
   }
 
   List<Lifestyle> getLifestyles() {
@@ -423,6 +422,18 @@ class _ProfileEditState extends State<ProfileEdit> {
     cigarettes = value;
   });
 
+  void setGender(value) => setState(() {
+    var profile = ProfileModel.from(widget.profile.value!);
+    profile.gender = value;
+    widget.profile.value = profile;
+  });
+
+  void setOrientation(value) => setState(() {
+    var profile = ProfileModel.from(widget.profile.value!);
+    profile.orientation = value;
+    widget.profile.value = profile;
+  });
+
   // On Submit functions
   void onSubmitBio(String value) {
     var profile = ProfileModel.from(widget.profile.value!);
@@ -467,7 +478,9 @@ class _ProfileEditState extends State<ProfileEdit> {
                         SimpleSelectionSectionItem(
                           profile: widget.profile,
                           value: widget.profile.value!.interests.join(", "),
-                          onSubmit: onSubmitInterests, // TODO: use the modal
+                          setState: onSubmitInterests,
+                          modalTitle: '',
+                          list: [], // TODO: use the modal
                         )
                       ],
                     ),
@@ -492,7 +505,28 @@ class _ProfileEditState extends State<ProfileEdit> {
                         SimpleSelectionSectionItem(
                           profile: widget.profile,
                           value: widget.profile.value!.gender,
-                          onSubmit: () => print("TODO"), // TODO: use the modal
+                          list: [
+                            TilesButton(
+                              title: 'Man',
+                              value: widget.profile.value!.gender,
+                              setValue: setGender,
+                              iconData: Icons.male,
+                            ),
+                            TilesButton(
+                              title: 'Woman',
+                              value: widget.profile.value!.gender,
+                              setValue: setGender,
+                              iconData: Icons.female,
+                            ),
+                            TilesButton(
+                              title: 'Other',
+                              value: widget.profile.value!.gender,
+                              setValue: setGender,
+                              iconData: Icons.edit,
+                            )
+                          ],
+                          setState: setGender,
+                          modalTitle: 'I am...',
                         )
                       ],
                     ),
@@ -502,7 +536,29 @@ class _ProfileEditState extends State<ProfileEdit> {
                         SimpleSelectionSectionItem(
                           profile: widget.profile,
                           value: widget.profile.value!.orientation,
-                          onSubmit: () => print("TODO"), // TODO: use the modal
+                          list: [
+                            TilesButton(
+                              title: 'Heterosexual',
+                              value: widget.profile.value!.orientation,
+                              setValue: setOrientation,
+                              iconData: Icons.male,
+                            ),
+                            TilesButton(
+                              title: 'Gay',
+                              value: widget.profile.value!.orientation,
+                              setValue: setOrientation,
+                              iconData: Icons.female,
+                            ),
+                            TilesButton(
+                              title: 'Bi',
+                              value: widget.profile.value!.orientation,
+                              setValue: setOrientation,
+                              iconData: Icons.edit,
+                            )
+                          ],
+                          setState: setOrientation,
+                          modalTitle: 'Define your sexual orientation',
+                           // TODO: use the modal
                         )
                       ],
                     ),
