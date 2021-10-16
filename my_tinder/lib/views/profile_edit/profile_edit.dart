@@ -8,6 +8,7 @@ import 'package:my_tinder/views/components/section_item/icon_item.dart';
 import 'package:my_tinder/views/components/section_item/simple_selection_item.dart';
 import 'package:my_tinder/views/components/section_item/text_input_item.dart';
 import 'package:my_tinder/views/components/section_item/title_item.dart';
+import 'package:my_tinder/views/profile_edit/widgets/picture_selector_list.dart';
 import 'package:my_tinder/views/widgets/section.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -113,6 +114,7 @@ class _ProfileEditState extends State<ProfileEdit> {
 
   @override
   Widget build(BuildContext context) {
+
     return DismissKeyboard(
       child: Scaffold(
         appBar: HeaderBar(
@@ -127,6 +129,9 @@ class _ProfileEditState extends State<ProfileEdit> {
                     child: ListView(
                   scrollDirection: Axis.vertical,
                   children: [
+                    PictureSelectorList(
+                      profile: widget.profile,
+                    ),
                     Section(
                       itemList: [
                         const TitleSectionItem("ABOUT ME"),
