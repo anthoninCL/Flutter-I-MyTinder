@@ -149,6 +149,7 @@ class TilesButton extends StatelessWidget implements Button {
   final String title;
   final String value;
   IconData iconData;
+  final bool isArray;
 
   @override
   late SystemSoundType sound;
@@ -157,12 +158,22 @@ class TilesButton extends StatelessWidget implements Button {
   late Icon icon;
 
   TilesButton(
-  {
+  {Key? key,
     required this.title,
     required this.value,
     required this.setValue,
-    required this.iconData
-  });
+    required this.iconData,
+    required this.isArray
+  }) : super(key: key);
+
+  late List<String> array = value.replaceAll(", ", ",").trim().split(",");
+
+  bool isSelected() {
+    if (array.contains(title)) {
+      return true;
+    }
+    return false;
+  }
 
   @override
   Widget buildButton() => Padding(
@@ -173,7 +184,7 @@ class TilesButton extends StatelessWidget implements Button {
         decoration: BoxDecoration(
           border: Border.all(
               color:
-              title == value ? AppTheme.colors.primary : AppTheme.colors.grey),
+              array.contains(title) ? AppTheme.colors.primary : AppTheme.colors.grey),
           borderRadius: const BorderRadius.all(Radius.circular(20)),
         ),
         child: Container(
@@ -187,7 +198,7 @@ class TilesButton extends StatelessWidget implements Button {
                   children: [
                     Icon(
                       iconData,
-                      color: title == value
+                      color: isSelected()
                           ? AppTheme.colors.primary
                           : AppTheme.colors.grey,
                       size: 20,
@@ -203,7 +214,7 @@ class TilesButton extends StatelessWidget implements Button {
                   title,
                   style: TextStyle(
                     fontSize: 16,
-                      color: title == value
+                      color: array.contains(title)
                           ? AppTheme.colors.primary
                           : AppTheme.colors.grey),
                 ),
@@ -217,7 +228,14 @@ class TilesButton extends StatelessWidget implements Button {
 
   @override
   void onPress() {
-    setValue(title == value ? "Unspecified" : title);
+    if (isSelected()) {
+      array.remove(title);
+      print('$array');
+      setValue(array.join(', '));
+    } else {
+      array.add(title);
+      setValue(array.join(', '));
+    }
   }
 
   @override

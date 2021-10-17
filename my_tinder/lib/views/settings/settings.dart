@@ -145,18 +145,21 @@ class _SettingsState extends State<Settings> {
                             value: wantToMeet,
                             setValue: setWantToMeet,
                             iconData: Icons.male,
+                            isArray: false,
                           ),
                           TilesButton(
                             title: 'Woman',
                             value: wantToMeet,
                             setValue: setWantToMeet,
                             iconData: Icons.female,
+                            isArray: false,
                           ),
                           TilesButton(
                             title: 'Other',
                             value: wantToMeet,
                             setValue: setWantToMeet,
                             iconData: Icons.edit,
+                            isArray: false,
                           )
                         ],
                       ),

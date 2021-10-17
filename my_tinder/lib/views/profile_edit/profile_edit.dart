@@ -135,72 +135,84 @@ class _ProfileEditState extends State<ProfileEdit> {
         value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
+        isArray: false
       ),
       TilesButton(
         title: 'Aquarius',
         value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
+        isArray: false
       ),
       TilesButton(
         title: 'Pisces',
         value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
+        isArray: false
       ),
       TilesButton(
         title: 'Aries',
         value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
+        isArray: false
       ),
       TilesButton(
         title: 'Taurus',
         value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
+        isArray: false
       ),
       TilesButton(
         title: 'Gemini',
         value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
+        isArray: false
       ),
       TilesButton(
         title: 'Cancer',
         value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
+        isArray: false
       ),
       TilesButton(
         title: 'Leo',
         value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
+        isArray: false
       ),
       TilesButton(
         title: 'Virgo',
         value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
+        isArray: false
       ),
       TilesButton(
         title: 'Libra',
         value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
+        isArray: false
       ),
       TilesButton(
         title: 'Scorpio',
         value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
+        isArray: false
       ),
       TilesButton(
         title: 'Sagittarius',
         value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,
+        isArray: false
       ),
     ];
   }
@@ -211,30 +223,35 @@ class _ProfileEditState extends State<ProfileEdit> {
         value: food,
         setValue: setFood,
         iconData: MdiIcons.nullIcon,
+        isArray: false
       ),
       TilesButton(
         title: 'Pasta',
         value: food,
         setValue: setFood,
         iconData: MdiIcons.nullIcon,
+        isArray: false
       ),
       TilesButton(
         title: 'Veggie',
         value: food,
         setValue: setFood,
         iconData: MdiIcons.nullIcon,
+        isArray: false
       ),
       TilesButton(
         title: 'Meat',
         value: food,
         setValue: setFood,
         iconData: MdiIcons.nullIcon,
+        isArray: false
       ),
       TilesButton(
         title: 'Cheese',
         value: food,
         setValue: setFood,
         iconData: MdiIcons.nullIcon,
+        isArray: false
       ),
     ];
   }
@@ -245,18 +262,21 @@ class _ProfileEditState extends State<ProfileEdit> {
         value: pet,
         setValue: setPet,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
       TilesButton(
         title: 'Cat',
         value: pet,
         setValue: setPet,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
       TilesButton(
         title: 'Bird',
         value: pet,
         setValue: setPet,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
     ];
   }
@@ -267,24 +287,28 @@ class _ProfileEditState extends State<ProfileEdit> {
         value: socialNetwork,
         setValue: setSocialNetwork,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
       TilesButton(
         title: 'Facebook',
         value: socialNetwork,
         setValue: setSocialNetwork,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
       TilesButton(
         title: 'LinkedIn',
         value: socialNetwork,
         setValue: setSocialNetwork,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
       TilesButton(
         title: 'TikTok',
         value: socialNetwork,
         setValue: setSocialNetwork,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
     ];
   }
@@ -295,24 +319,28 @@ class _ProfileEditState extends State<ProfileEdit> {
         value: sport,
         setValue: setSport,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
       TilesButton(
         title: 'Basketball',
         value: sport,
         setValue: setSport,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
       TilesButton(
         title: 'Tennis',
         value: sport,
         setValue: setSport,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
       TilesButton(
         title: 'Rugby',
         value: sport,
         setValue: setSport,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
     ];
   }
@@ -323,24 +351,28 @@ class _ProfileEditState extends State<ProfileEdit> {
         value: drinks,
         setValue: setDrinks,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
       TilesButton(
         title: 'Vodka',
         value: drinks,
         setValue: setDrinks,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
       TilesButton(
         title: 'Whisky',
         value: drinks,
         setValue: setDrinks,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
       TilesButton(
         title: 'Gin',
         value: drinks,
         setValue: setDrinks,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
     ];
   }
@@ -351,18 +383,21 @@ class _ProfileEditState extends State<ProfileEdit> {
         value: cigarettes,
         setValue: setCigarette,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
       TilesButton(
         title: 'No',
         value: cigarettes,
         setValue: setCigarette,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
       TilesButton(
         title: 'Sometimes',
         value: cigarettes,
         setValue: setCigarette,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
     ];
   }
@@ -374,18 +409,119 @@ class _ProfileEditState extends State<ProfileEdit> {
         value: widget.profile.value!.interests.join(", "),
         setValue: onSubmitInterests,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
       TilesButton(
         title: 'Travel',
         value: widget.profile.value!.interests.join(", "),
         setValue: onSubmitInterests,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
       TilesButton(
         title: 'Sports',
         value: widget.profile.value!.interests.join(", "),
         setValue: onSubmitInterests,
         iconData: MdiIcons.nullIcon,
+        isArray: false,
+      ),
+      TilesButton(
+        title: 'Video Games',
+        value: widget.profile.value!.interests.join(", "),
+        setValue: onSubmitInterests,
+        iconData: MdiIcons.nullIcon,
+        isArray: false,
+      ),
+      TilesButton(
+        title: 'Netflix and Chill',
+        value: widget.profile.value!.interests.join(", "),
+        setValue: onSubmitInterests,
+        iconData: MdiIcons.nullIcon,
+        isArray: false,
+      ),
+      TilesButton(
+        title: 'Sunsets',
+        value: widget.profile.value!.interests.join(", "),
+        setValue: onSubmitInterests,
+        iconData: MdiIcons.nullIcon,
+        isArray: false,
+      ),
+      TilesButton(
+        title: 'Music',
+        value: widget.profile.value!.interests.join(", "),
+        setValue: onSubmitInterests,
+        iconData: MdiIcons.nullIcon,
+        isArray: false,
+      ),
+      TilesButton(
+        title: 'Sex',
+        value: widget.profile.value!.interests.join(", "),
+        setValue: onSubmitInterests,
+        iconData: MdiIcons.nullIcon,
+        isArray: false,
+      ),
+      TilesButton(
+        title: 'Party',
+        value: widget.profile.value!.interests.join(", "),
+        setValue: onSubmitInterests,
+        iconData: MdiIcons.nullIcon,
+        isArray: false,
+      ),
+      TilesButton(
+        title: 'Disney',
+        value: widget.profile.value!.interests.join(", "),
+        setValue: onSubmitInterests,
+        iconData: MdiIcons.nullIcon,
+        isArray: false,
+      ),
+      TilesButton(
+        title: 'Anime',
+        value: widget.profile.value!.interests.join(", "),
+        setValue: onSubmitInterests,
+        iconData: MdiIcons.nullIcon,
+        isArray: false,
+      ),
+      TilesButton(
+        title: 'Cinema',
+        value: widget.profile.value!.interests.join(", "),
+        setValue: onSubmitInterests,
+        iconData: MdiIcons.nullIcon,
+        isArray: false,
+      ),
+      TilesButton(
+        title: 'Fast food',
+        value: widget.profile.value!.interests.join(", "),
+        setValue: onSubmitInterests,
+        iconData: MdiIcons.nullIcon,
+        isArray: false,
+      ),
+      TilesButton(
+        title: 'Uber eats',
+        value: widget.profile.value!.interests.join(", "),
+        setValue: onSubmitInterests,
+        iconData: MdiIcons.nullIcon,
+        isArray: false,
+      ),
+      TilesButton(
+        title: 'Pool',
+        value: widget.profile.value!.interests.join(", "),
+        setValue: onSubmitInterests,
+        iconData: MdiIcons.nullIcon,
+        isArray: false,
+      ),
+      TilesButton(
+        title: 'Apple',
+        value: widget.profile.value!.interests.join(", "),
+        setValue: onSubmitInterests,
+        iconData: MdiIcons.nullIcon,
+        isArray: false,
+      ),
+      TilesButton(
+        title: 'Globe-trotter',
+        value: widget.profile.value!.interests.join(", "),
+        setValue: onSubmitInterests,
+        iconData: MdiIcons.nullIcon,
+        isArray: false,
       ),
     ];
   }
@@ -535,18 +671,21 @@ class _ProfileEditState extends State<ProfileEdit> {
                               value: widget.profile.value!.gender,
                               setValue: setGender,
                               iconData: Icons.male,
+                              isArray: false,
                             ),
                             TilesButton(
                               title: 'Woman',
                               value: widget.profile.value!.gender,
                               setValue: setGender,
                               iconData: Icons.female,
+                              isArray: false,
                             ),
                             TilesButton(
                               title: 'Other',
                               value: widget.profile.value!.gender,
                               setValue: setGender,
                               iconData: Icons.edit,
+                              isArray: false,
                             )
                           ],
                           setState: setGender,
@@ -566,23 +705,25 @@ class _ProfileEditState extends State<ProfileEdit> {
                               value: widget.profile.value!.orientation,
                               setValue: setOrientation,
                               iconData: Icons.male,
+                              isArray: false,
                             ),
                             TilesButton(
                               title: 'Gay',
                               value: widget.profile.value!.orientation,
                               setValue: setOrientation,
                               iconData: Icons.female,
+                              isArray: false,
                             ),
                             TilesButton(
                               title: 'Bi',
                               value: widget.profile.value!.orientation,
                               setValue: setOrientation,
                               iconData: Icons.edit,
+                              isArray: false,
                             )
                           ],
                           setState: setOrientation,
                           modalTitle: 'Define your sexual orientation',
-                           // TODO: use the modal
                         )
                       ],
                     ),
