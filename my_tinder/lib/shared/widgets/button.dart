@@ -23,13 +23,18 @@ class MatchButton implements Button {
   @override
   SystemSoundType sound;
 
+  VoidCallback? onClick;
+
   AutoScrollController controller;
   int index;
 
-  MatchButton(this.icon, this.sound, this.controller, this.index);
+  MatchButton(this.icon, this.sound, this.controller, this.index, [this.onClick]);
 
   @override
   void onPress() {
+    if (onClick != null) {
+      onClick!();
+    }
     _scrollToIndex();
     FlutterBeep.beep();
     // The next line should play a sound but it's not working, so the FlutterBeep is doing it
@@ -43,9 +48,43 @@ class MatchButton implements Button {
 
   @override
   Widget buildButton() => FloatingActionButton(
-        heroTag: "MatchButton",
         onPressed: onPress,
         child: icon,
+        backgroundColor: Colors.white,
+      );
+}
+
+class ReturnButton implements Button {
+  @override
+  Icon icon;
+
+  @override
+  SystemSoundType sound;
+
+  BuildContext context;
+  ReturnButton(this.icon, this.sound, this.context);
+
+  @override
+  void onPress() {
+    Navigator.pop(context);
+  }
+
+  @override
+  Widget buildButton() => FloatingActionButton(
+        onPressed: onPress,
+        child: Container(
+            width: 56,
+            height: 56,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                colors: [
+                  AppTheme.colors.primary,
+                  AppTheme.colors.secondary,
+                ],
+              ),
+            ),
+            child: icon),
         backgroundColor: Colors.white,
       );
 }
@@ -58,7 +97,6 @@ class EditButton implements Button {
   SystemSoundType sound;
 
   BuildContext context;
-
   ValueNotifier<ProfileModel?> profile;
 
   EditButton(this.icon, this.sound, this.context, this.profile);
@@ -121,27 +159,25 @@ class PhotoButton implements Button {
 
   PhotoButton(this.icon, this.sound, this.onPressed);
 
-
   @override
   Widget buildButton() => Padding(
-    padding: const EdgeInsets.only(top: 8.0),
-    child: GestureDetector(
-      onTap: onPress,
-      child: Container(
-        width: 70.0,
-        height: 70.0,
-        decoration: BoxDecoration(
-          color: AppTheme.colors.primary,
-          shape: BoxShape.circle,
+        padding: const EdgeInsets.only(top: 8.0),
+        child: GestureDetector(
+          onTap: onPress,
+          child: Container(
+            width: 70.0,
+            height: 70.0,
+            decoration: BoxDecoration(
+              color: AppTheme.colors.primary,
+              shape: BoxShape.circle,
+            ),
+            child: icon,
+          ),
         ),
-        child: icon,
-      ),
-    ),
-  );
+      );
 
   @override
   void onPress() {
     onPressed();
   }
-
 }
