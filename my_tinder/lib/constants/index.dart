@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_tinder/constants/matches.dart';
-import 'package:my_tinder/constants/messages.dart';
-import 'package:my_tinder/constants/new_matches.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:my_tinder/models/messages.dart';
+import 'package:my_tinder/models/new_matches.dart';
 
 @immutable
 class Constants {
