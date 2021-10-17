@@ -32,7 +32,8 @@ class MatchButton implements Button {
   void onPress() {
     _scrollToIndex();
     FlutterBeep.beep();
-    SystemSound.play(sound);
+    // The next line should play a sound but it's not working, so the FlutterBeep is doing it
+    // SystemSound.play(sound);
   }
 
   Future _scrollToIndex() async {
