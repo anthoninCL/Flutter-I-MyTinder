@@ -20,6 +20,7 @@ class AppColors {
   final greyLight25 = const Color(0x40CCCCCC);
   final black40 = const Color(0x66000000);
   final greyBack47 = const Color(0x75E5E5E5);
+  final greyLight50 = const Color(0x80CCCCCC);
 
   const AppColors();
 }
