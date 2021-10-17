@@ -367,6 +367,30 @@ class _ProfileEditState extends State<ProfileEdit> {
     ];
   }
 
+  List<TilesButton> getInterestsList() {
+    return [
+      TilesButton(
+        title: 'Entrepreneurship',
+        value: widget.profile.value!.interests.join(", "),
+        setValue: onSubmitInterests,
+        iconData: MdiIcons.nullIcon,
+      ),
+      TilesButton(
+        title: 'Travel',
+        value: widget.profile.value!.interests.join(", "),
+        setValue: onSubmitInterests,
+        iconData: MdiIcons.nullIcon,
+      ),
+      TilesButton(
+        title: 'Sports',
+        value: widget.profile.value!.interests.join(", "),
+        setValue: onSubmitInterests,
+        iconData: MdiIcons.nullIcon,
+      ),
+    ];
+  }
+
+
   // Save profile in the Localstore, triggered on Finish Text button
   void saveInformations() async {
     SharedPreferences s = await SharedPreferences.getInstance();
@@ -479,8 +503,8 @@ class _ProfileEditState extends State<ProfileEdit> {
                           profile: widget.profile,
                           value: widget.profile.value!.interests.join(", "),
                           setState: onSubmitInterests,
-                          modalTitle: '',
-                          list: [], // TODO: use the modal
+                          modalTitle: 'Choose your interests',
+                          list: getInterestsList(),
                         )
                       ],
                     ),

@@ -4,7 +4,7 @@ import 'package:my_tinder/models/profile.dart';
 import 'package:my_tinder/shared/widgets/button.dart';
 import 'package:my_tinder/themes/app_theme.dart';
 
-import '../modal.dart';
+import 'package:my_tinder/views/components/modal.dart';
 
 class SimpleSelectionSectionItem extends StatefulWidget {
   ValueNotifier<ProfileModel?> profile;
@@ -18,7 +18,7 @@ class SimpleSelectionSectionItem extends StatefulWidget {
     required this.value,
     required this.setState,
     required this.modalTitle,
-    required this.list
+    required this.list,
   }) : super(key: key);
 
   @override
@@ -31,9 +31,12 @@ class _SimpleSelectionSectionItemState
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        // TODO: Open la bonne modale + renvoyer la valeur set dans la modale
         onTap: () {
-          bottomModal(context, widget.modalTitle, widget.list, widget.setState);
+          if (widget.modalTitle == 'Choose your interests') {
+            bottomSearchModal(context, widget.modalTitle, widget.list, widget.setState, widget.value);
+          } else {
+            bottomModal(context, widget.modalTitle, widget.list, widget.setState, widget.value);
+          }
         },
         child: ListTile(
           contentPadding: const EdgeInsets.only(

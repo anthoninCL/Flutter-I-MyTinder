@@ -31,7 +31,7 @@ class _SelectionSectionItemState extends State<SelectionSectionItem> {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          bottomModal(context, widget.modalTitle, widget.list, widget.setState);
+          bottomModal(context, widget.modalTitle, widget.list, widget.setState, widget.value);
         },
         child : ListTile(
           contentPadding: const EdgeInsets.only(

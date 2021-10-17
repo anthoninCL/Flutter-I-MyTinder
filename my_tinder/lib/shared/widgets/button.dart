@@ -217,8 +217,7 @@ class TilesButton extends StatelessWidget implements Button {
 
   @override
   void onPress() {
-    setValue(title);
-    print('onpress button title: $title');
+    setValue(title == value ? "Unspecified" : title);
   }
 
   @override
