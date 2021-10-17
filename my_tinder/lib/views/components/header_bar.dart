@@ -26,7 +26,7 @@ class HeaderBar extends StatelessWidget implements PreferredSizeWidget {
         TextButton(
           style: TextButton.styleFrom(primary: AppTheme.colors.primary),
           onPressed: () {
-            onPress;
+            onPress();
             Navigator.pop(context);
           },
           child: const Text('Finish'),

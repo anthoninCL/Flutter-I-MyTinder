@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:my_tinder/models/profile.dart';
 
 class TextInputSectionItem extends StatefulWidget {
-  final String value;
+  ValueNotifier<ProfileModel?> profile;
+  final Function onSubmit;
 
-  const TextInputSectionItem({required this.value});
+  TextInputSectionItem({required this.profile, required this.onSubmit});
 
   @override
-  _TextInputSectionItemState createState() => _TextInputSectionItemState(
-      value: value
-  );
+  _TextInputSectionItemState createState() => _TextInputSectionItemState();
 
 }
 
 class _TextInputSectionItemState extends State<TextInputSectionItem> {
-  String value;
-  _TextInputSectionItemState({required this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -25,16 +22,19 @@ class _TextInputSectionItemState extends State<TextInputSectionItem> {
         right: 20,
         bottom: 5,
       ),
-      child: const SizedBox(
+      child: SizedBox(
         child: TextField(
           keyboardType: TextInputType.multiline,
           textInputAction: TextInputAction.go,
           maxLines: null,
           decoration: InputDecoration(
             border: InputBorder.none,
-            hintText: 'Enter a description',
+            hintText: widget.profile.value!.bio,
           ),
           maxLength: 500,
+          onSubmitted: (String value) {
+            widget.onSubmit(value);
+          },
         ),
       ),
     );

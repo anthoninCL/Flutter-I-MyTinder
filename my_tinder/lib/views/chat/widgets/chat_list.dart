@@ -1,7 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:my_tinder/constants/messages.dart';
+import 'package:my_tinder/models/messages.dart';
 import 'package:my_tinder/shared/utils/chat_utils.dart';
 import 'package:my_tinder/views/chat/widgets/message_card.dart';
 
