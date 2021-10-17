@@ -169,10 +169,17 @@ class TilesButton extends StatelessWidget implements Button {
   late List<String> array = value.replaceAll(", ", ",").trim().split(",");
 
   bool isSelected() {
-    if (array.contains(title)) {
-      return true;
+    if (isArray) {
+      if (array.contains(title)) {
+        return true;
+      }
+      return false;
+    } else {
+      if (title == value) {
+        return true;
+      }
+      return false;
     }
-    return false;
   }
 
   @override
@@ -228,12 +235,16 @@ class TilesButton extends StatelessWidget implements Button {
 
   @override
   void onPress() {
-    if (isSelected()) {
-      array.remove(title);
-      setValue(array.join(', '));
+    if (isArray) {
+      if (isSelected()) {
+        array.remove(title);
+        setValue(array.join(', '));
+      } else {
+        array.add(title);
+        setValue(array.join(', '));
+      }
     } else {
-      array.add(title);
-      setValue(array.join(', '));
+      setValue(title == value ? "Unspecified" : title);
     }
   }
 
