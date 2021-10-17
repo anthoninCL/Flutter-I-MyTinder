@@ -26,10 +26,11 @@ class MatchButton implements Button {
 
   VoidCallback? onClick;
 
-  AutoScrollController controller;
+  AutoScrollController? controller;
   int index;
 
-  MatchButton(this.icon, this.sound, this.controller, this.index, [this.onClick]);
+  MatchButton(this.icon, this.sound, this.controller, this.index,
+      [this.onClick]);
 
   @override
   void onPress() {
@@ -43,8 +44,10 @@ class MatchButton implements Button {
   }
 
   Future _scrollToIndex() async {
-    await controller.scrollToIndex(index + 1,
-        preferPosition: AutoScrollPosition.begin);
+    if (controller != null) {
+      await controller!
+          .scrollToIndex(index + 1, preferPosition: AutoScrollPosition.begin);
+    }
   }
 
   @override
@@ -197,13 +200,13 @@ class TilesButton extends StatelessWidget implements Button {
   late Icon icon;
 
   TilesButton(
-  {Key? key,
-    required this.title,
-    required this.value,
-    required this.setValue,
-    required this.iconData,
-    required this.isArray
-  }) : super(key: key);
+      {Key? key,
+      required this.title,
+      required this.value,
+      required this.setValue,
+      required this.iconData,
+      required this.isArray})
+      : super(key: key);
 
   late List<String> array = value.replaceAll(", ", ",").trim().split(",");
 
@@ -223,54 +226,55 @@ class TilesButton extends StatelessWidget implements Button {
 
   @override
   Widget buildButton() => Padding(
-    padding: const EdgeInsets.only(top: 8.0),
-    child: GestureDetector(
-      onTap: onPress,
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-              color:
-              array.contains(title) ? AppTheme.colors.primary : AppTheme.colors.grey),
-          borderRadius: const BorderRadius.all(Radius.circular(20)),
-        ),
-        child: Container(
-          padding: const EdgeInsets.all(6),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (iconData != MdiIcons.nullIcon)
-                Row(
-                  children: [
-                    Icon(
-                      iconData,
-                      color: isSelected()
-                          ? AppTheme.colors.primary
-                          : AppTheme.colors.grey,
-                      size: 20,
+        padding: const EdgeInsets.only(top: 8.0),
+        child: GestureDetector(
+          onTap: onPress,
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                  color: array.contains(title)
+                      ? AppTheme.colors.primary
+                      : AppTheme.colors.grey),
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
+            ),
+            child: Container(
+              padding: const EdgeInsets.all(6),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (iconData != MdiIcons.nullIcon)
+                    Row(
+                      children: [
+                        Icon(
+                          iconData,
+                          color: isSelected()
+                              ? AppTheme.colors.primary
+                              : AppTheme.colors.grey,
+                          size: 20,
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                      ],
                     ),
-                    const SizedBox(
-                      width: 5,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: array.contains(title)
+                              ? AppTheme.colors.primary
+                              : AppTheme.colors.grey),
                     ),
-                  ],
-                ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: 16,
-                      color: array.contains(title)
-                          ? AppTheme.colors.primary
-                          : AppTheme.colors.grey),
-                ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
-      ),
-    ),
-  );
+      );
 
   @override
   void onPress() {

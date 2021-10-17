@@ -54,9 +54,10 @@ class _MyHomePageState extends State<MyHomePage> {
     sPref.setString("pet", "Cat");
     sPref.setString("social network", "Unspecified");
     sPref.setString("sport", "Gym");
-    sPref.setString("drinks", "Gyn Tonic");
+    sPref.setString("drinks", "Gin Tonic");
     sPref.setString("cigarettes", "Unspecified");
-    sPref.setStringList("interests", ["Travel", "Sports", "Entrepreneurship", "Globe-trotter"]);
+    sPref.setStringList(
+        "interests", ["Travel", "Sports", "Entrepreneurship", "Globe-trotter"]);
     sPref.setString("city", "Paris, France");
     sPref.setString("gender", "Male");
     sPref.setString("orientation", "Hetero");
@@ -66,7 +67,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    addProfileToLocaleStore().then((value) => print("Finished to write profile in LocalStore"));
+    addProfileToLocaleStore()
+        .then((value) => print("Finished to write profile in LocalStore"));
   }
 
   void _onItemTapped(int index) {
