@@ -131,6 +131,24 @@ class _ProfileEditState extends State<ProfileEdit> {
   List<TilesButton> getZodiacButtonList() {
     return [
       TilesButton(
+        title: 'Capricorn',
+        value: zodiacSign,
+        setValue: setZodiacSign,
+        iconData: MdiIcons.nullIcon,
+      ),
+      TilesButton(
+        title: 'Aquarius',
+        value: zodiacSign,
+        setValue: setZodiacSign,
+        iconData: MdiIcons.nullIcon,
+      ),
+      TilesButton(
+        title: 'Pisces',
+        value: zodiacSign,
+        setValue: setZodiacSign,
+        iconData: MdiIcons.nullIcon,
+      ),
+      TilesButton(
         title: 'Aries',
         value: zodiacSign,
         setValue: setZodiacSign,
@@ -180,24 +198,6 @@ class _ProfileEditState extends State<ProfileEdit> {
       ),
       TilesButton(
         title: 'Sagittarius',
-        value: zodiacSign,
-        setValue: setZodiacSign,
-        iconData: MdiIcons.nullIcon,
-      ),
-      TilesButton(
-        title: 'Capricorn',
-        value: zodiacSign,
-        setValue: setZodiacSign,
-        iconData: MdiIcons.nullIcon,
-      ),
-      TilesButton(
-        title: 'Aquarius',
-        value: zodiacSign,
-        setValue: setZodiacSign,
-        iconData: MdiIcons.nullIcon,
-      ),
-      TilesButton(
-        title: 'Piscies',
         value: zodiacSign,
         setValue: setZodiacSign,
         iconData: MdiIcons.nullIcon,

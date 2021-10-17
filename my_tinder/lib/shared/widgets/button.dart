@@ -174,7 +174,7 @@ class TilesButton extends StatelessWidget implements Button {
           border: Border.all(
               color:
               title == value ? AppTheme.colors.primary : AppTheme.colors.grey),
-          borderRadius: const BorderRadius.all(Radius.circular(15)),
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
         ),
         child: Container(
           padding: const EdgeInsets.all(6),
@@ -197,12 +197,16 @@ class TilesButton extends StatelessWidget implements Button {
                     ),
                   ],
                 ),
-              Text(
-                title,
-                style: TextStyle(
-                    color: title == value
-                        ? AppTheme.colors.primary
-                        : AppTheme.colors.grey),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 16,
+                      color: title == value
+                          ? AppTheme.colors.primary
+                          : AppTheme.colors.grey),
+                ),
               ),
             ],
           ),

@@ -17,28 +17,38 @@ bottomModal(context, title, list, setState) {
       builder: (context) => Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18),
           child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.65,
+            height: MediaQuery.of(context).size.height * 0.6,
             child: Column(
               children: [
-                Expanded(
-                  child: Padding(
-                  padding: const EdgeInsets.all(30.0),
-                  child: Text(
-                      title,
-                      style: TextStyle(
-                        color: AppTheme.colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Roboto',
-                        fontSize: 25
-                      ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15.0),
+                  child: Container(
+                    height: 6,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      color: AppTheme.colors.greyLight,
+                      borderRadius: BorderRadius.circular(3),
+                    ),
+                  ),
+                ),
+                Padding(
+                padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 10),
+                child: Text(
+                    title,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: AppTheme.colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Roboto',
+                      fontSize: 25
                     ),
                   ),
                 ),
                 Expanded(
                   child: Wrap(
-                    spacing: 5.0,
+                    spacing: 7.0,
                     runSpacing: 5.0,
-                    direction: Axis.vertical, // main axis (rows or columns)
+                    direction: Axis.horizontal, // main axis (rows or columns)
                     children: [
                       for(var item in list )
                          TilesButton(
@@ -50,15 +60,15 @@ bottomModal(context, title, list, setState) {
                     ],
                   ),
                 ),
-                Flexible(
+                Align(
+                  alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 50),
-                    child : FloattingTextButton(
+                    padding: const EdgeInsets.only(bottom: 30.0),
+                    child: FloattingTextButton(
                       title: 'Finish',
                       setState: setState!,
                     ),
-                  )
-
+                  ),
                 )
               ],
             ),
