@@ -52,6 +52,7 @@ class MatchButton implements Button {
 
   @override
   Widget buildButton() => FloatingActionButton(
+        heroTag: "MatchButton",
         onPressed: onPress,
         child: icon,
         backgroundColor: Colors.white,
@@ -75,7 +76,8 @@ class ReturnButton implements Button {
 
   @override
   Widget buildButton() => FloatingActionButton(
-        onPressed: onPress,
+      heroTag: "ReturnButton",
+      onPressed: onPress,
         child: Container(
             width: 56,
             height: 56,

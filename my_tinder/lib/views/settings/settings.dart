@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_tinder/models/profile.dart';
 import 'package:my_tinder/shared/widgets/button.dart';
 import 'package:my_tinder/views/components/dismiss_keyboard.dart';
@@ -144,21 +145,21 @@ class _SettingsState extends State<Settings> {
                             title: 'Man',
                             value: wantToMeet,
                             setValue: setWantToMeet,
-                            iconData: Icons.male,
+                            iconData: MdiIcons.nullIcon,
                             isArray: false,
                           ),
                           TilesButton(
                             title: 'Woman',
                             value: wantToMeet,
                             setValue: setWantToMeet,
-                            iconData: Icons.female,
+                            iconData: MdiIcons.nullIcon,
                             isArray: false,
                           ),
                           TilesButton(
                             title: 'Other',
                             value: wantToMeet,
                             setValue: setWantToMeet,
-                            iconData: Icons.edit,
+                            iconData: MdiIcons.nullIcon,
                             isArray: false,
                           )
                         ],
