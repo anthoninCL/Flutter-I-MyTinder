@@ -22,19 +22,16 @@ class MatchButton implements Button {
   @override
   SystemSoundType sound;
 
-  VoidCallback? onClick;
+  VoidCallback onClick;
 
   AutoScrollController controller;
   int index;
 
-  MatchButton(this.icon, this.sound, this.controller, this.index,
-      [this.onClick]);
+  MatchButton(this.icon, this.sound, this.controller, this.index, this.onClick);
 
   @override
   void onPress() {
-    if (onClick != null) {
-      onClick!();
-    }
+    onClick();
     _scrollToIndex();
     SystemSound.play(sound);
   }
@@ -52,9 +49,8 @@ class MatchButton implements Button {
       );
 }
 
-
 class ReturnButton implements Button {
-    @override
+  @override
   Icon icon;
 
   @override
@@ -67,7 +63,8 @@ class ReturnButton implements Button {
   void onPress() {
     Navigator.pop(context);
   }
-    @override
+
+  @override
   Widget buildButton() => FloatingActionButton(
         onPressed: onPress,
         child: Container(
@@ -85,8 +82,8 @@ class ReturnButton implements Button {
             child: icon),
         backgroundColor: Colors.white,
       );
-
 }
+
 class EditButton implements Button {
   @override
   Icon icon;
@@ -157,27 +154,25 @@ class PhotoButton implements Button {
 
   PhotoButton(this.icon, this.sound, this.onPressed);
 
-
   @override
   Widget buildButton() => Padding(
-    padding: const EdgeInsets.only(top: 8.0),
-    child: GestureDetector(
-      onTap: onPress,
-      child: Container(
-        width: 70.0,
-        height: 70.0,
-        decoration: BoxDecoration(
-          color: AppTheme.colors.primary,
-          shape: BoxShape.circle,
+        padding: const EdgeInsets.only(top: 8.0),
+        child: GestureDetector(
+          onTap: onPress,
+          child: Container(
+            width: 70.0,
+            height: 70.0,
+            decoration: BoxDecoration(
+              color: AppTheme.colors.primary,
+              shape: BoxShape.circle,
+            ),
+            child: icon,
+          ),
         ),
-        child: icon,
-      ),
-    ),
-  );
+      );
 
   @override
   void onPress() {
     onPressed();
   }
-
 }
