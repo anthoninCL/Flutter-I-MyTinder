@@ -230,7 +230,6 @@ class TilesButton extends StatelessWidget implements Button {
   void onPress() {
     if (isSelected()) {
       array.remove(title);
-      print('$array');
       setValue(array.join(', '));
     } else {
       array.add(title);
