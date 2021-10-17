@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_beep/flutter_beep.dart';
 import 'package:my_tinder/models/profile.dart';
 import 'package:my_tinder/themes/app_theme.dart';
-import 'package:my_tinder/models/profile.dart';
 import 'package:my_tinder/views/profile_edit/profile_edit.dart';
 import 'package:my_tinder/views/settings/settings.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
@@ -24,16 +23,18 @@ class MatchButton implements Button {
   @override
   SystemSoundType sound;
 
-  VoidCallback onClick;
+  VoidCallback? onClick;
 
   AutoScrollController controller;
   int index;
 
-  MatchButton(this.icon, this.sound, this.controller, this.index, this.onClick);
+  MatchButton(this.icon, this.sound, this.controller, this.index, [this.onClick]);
 
   @override
   void onPress() {
-    onClick();
+    if (onClick != null) {
+      onClick!();
+    }
     _scrollToIndex();
     FlutterBeep.beep();
     // The next line should play a sound but it's not working, so the FlutterBeep is doing it
