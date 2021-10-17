@@ -40,6 +40,7 @@ dependencies:
   material_design_icons_flutter: 5.0.5955-rc.1
   shared_preferences: ^2.0.8
   image_picker: ^0.8.4+2
+  flutter_beep: ^1.0.0
 
 dev_dependencies:
   flutter_test:
