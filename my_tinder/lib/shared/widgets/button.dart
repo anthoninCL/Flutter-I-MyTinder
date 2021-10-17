@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:flutter_beep/flutter_beep.dart';
 import 'package:my_tinder/models/profile.dart';
 import 'package:my_tinder/themes/app_theme.dart';
 import 'package:my_tinder/views/profile_edit/profile_edit.dart';
@@ -23,15 +24,22 @@ class MatchButton implements Button {
   @override
   SystemSoundType sound;
 
+  VoidCallback? onClick;
+
   AutoScrollController controller;
   int index;
 
-  MatchButton(this.icon, this.sound, this.controller, this.index);
+  MatchButton(this.icon, this.sound, this.controller, this.index, [this.onClick]);
 
   @override
   void onPress() {
+    if (onClick != null) {
+      onClick!();
+    }
     _scrollToIndex();
-    SystemSound.play(sound);
+    FlutterBeep.beep();
+    // The next line should play a sound but it's not working, so the FlutterBeep is doing it
+    // SystemSound.play(sound);
   }
 
   Future _scrollToIndex() async {
@@ -41,9 +49,43 @@ class MatchButton implements Button {
 
   @override
   Widget buildButton() => FloatingActionButton(
-        heroTag: "MatchButton",
         onPressed: onPress,
         child: icon,
+        backgroundColor: Colors.white,
+      );
+}
+
+class ReturnButton implements Button {
+  @override
+  Icon icon;
+
+  @override
+  SystemSoundType sound;
+
+  BuildContext context;
+  ReturnButton(this.icon, this.sound, this.context);
+
+  @override
+  void onPress() {
+    Navigator.pop(context);
+  }
+
+  @override
+  Widget buildButton() => FloatingActionButton(
+        onPressed: onPress,
+        child: Container(
+            width: 56,
+            height: 56,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                colors: [
+                  AppTheme.colors.primary,
+                  AppTheme.colors.secondary,
+                ],
+              ),
+            ),
+            child: icon),
         backgroundColor: Colors.white,
       );
 }
@@ -56,7 +98,6 @@ class EditButton implements Button {
   SystemSoundType sound;
 
   BuildContext context;
-
   ValueNotifier<ProfileModel?> profile;
 
   EditButton(this.icon, this.sound, this.context, this.profile);
@@ -119,29 +160,27 @@ class PhotoButton implements Button {
 
   PhotoButton(this.icon, this.sound, this.onPressed);
 
-
   @override
   Widget buildButton() => Padding(
-    padding: const EdgeInsets.only(top: 8.0),
-    child: GestureDetector(
-      onTap: onPress,
-      child: Container(
-        width: 70.0,
-        height: 70.0,
-        decoration: BoxDecoration(
-          color: AppTheme.colors.primary,
-          shape: BoxShape.circle,
+        padding: const EdgeInsets.only(top: 8.0),
+        child: GestureDetector(
+          onTap: onPress,
+          child: Container(
+            width: 70.0,
+            height: 70.0,
+            decoration: BoxDecoration(
+              color: AppTheme.colors.primary,
+              shape: BoxShape.circle,
+            ),
+            child: icon,
+          ),
         ),
-        child: icon,
-      ),
-    ),
-  );
+      );
 
   @override
   void onPress() {
     onPressed();
   }
-
 }
 
 class TilesButton extends StatelessWidget implements Button {
@@ -252,5 +291,4 @@ class TilesButton extends StatelessWidget implements Button {
   Widget build(BuildContext context) {
     return buildButton();
   }
-
 }
