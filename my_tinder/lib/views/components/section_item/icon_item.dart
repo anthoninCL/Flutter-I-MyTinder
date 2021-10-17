@@ -1,43 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:my_tinder/shared/widgets/button.dart';
 import 'package:my_tinder/themes/app_theme.dart';
+
+import '../modal.dart';
 
 class IconSectionItem extends StatefulWidget {
   final String title;
   final String value;
   final Icon icon;
+  final String modalTitle;
+  final List<TilesButton> list;
+  final Function setState;
 
-  const IconSectionItem({required this.title, required this.value, required this.icon});
+  const IconSectionItem({
+    required this.title,
+    required this.value,
+    required this.icon,
+    required this.setState,
+    required this.modalTitle,
+    required this.list,
+  });
 
   @override
-  _IconSectionItemState createState() => _IconSectionItemState(
-      title: title, value: value, icon: icon
-  );
+  _IconSectionItemState createState() => _IconSectionItemState();
 }
 
 class _IconSectionItemState extends State<IconSectionItem> {
-  String title;
-  String value;
-  Icon icon;
-  _IconSectionItemState({required this.title, required this.value, required this.icon});
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // TODO: Open la bonne modale + renvoyer la valeur set dans la modale
         onTap: () {
-          setState(() {
-            value = "Oui";
-          });
+          bottomModal(context, widget.modalTitle, widget.list, widget.setState, widget.value);
         },
         child : ListTile(
           contentPadding: const EdgeInsets.only(
             left: 24,
             right: 20,
           ),
-          leading: icon,
+          leading: widget.icon,
           title: Text(
-            title,
+            widget.title,
             style: TextStyle(
               color: AppTheme.colors.black,
               fontWeight: FontWeight.normal,
@@ -46,7 +49,7 @@ class _IconSectionItemState extends State<IconSectionItem> {
             ),
           ),
           trailing: Text(
-            value,
+            widget.value,
             style: TextStyle(
               color: AppTheme.colors.grey,
               fontWeight: FontWeight.normal,

@@ -1,33 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:my_tinder/shared/widgets/button.dart';
 import 'package:my_tinder/themes/app_theme.dart';
+
+import '../modal.dart';
 
 class SelectionSectionItem extends StatefulWidget {
   final String title;
   final String value;
+  final String modalTitle;
+  final List<TilesButton> list;
+  final Function setState;
 
-  const SelectionSectionItem({required this.title, required this.value});
+  const SelectionSectionItem(
+      {
+        required this.title,
+        required this.value,
+        required this.setState,
+        required this.modalTitle,
+        required this.list,
+      });
 
   @override
-  _SelectionSectionItemState createState() => _SelectionSectionItemState(
-    title: title, value: value
-  );
+  _SelectionSectionItemState createState() => _SelectionSectionItemState();
 
 }
 
 class _SelectionSectionItemState extends State<SelectionSectionItem> {
-  String title;
-  String value;
-  _SelectionSectionItemState({required this.title, required this.value});
-
-  @override
+@override
   Widget build(BuildContext context) {
     return GestureDetector(
-        // TODO: Open la bonne modale + renvoyer la valeur set dans la modale
         onTap: () {
-          setState(() {
-            value = "Oui";
-          });
+          bottomModal(context, widget.modalTitle, widget.list, widget.setState, widget.value);
         },
         child : ListTile(
           contentPadding: const EdgeInsets.only(
@@ -35,7 +39,7 @@ class _SelectionSectionItemState extends State<SelectionSectionItem> {
             right: 20,
           ),
           title: Text(
-            title,
+            widget.title,
             style: TextStyle(
                 color: AppTheme.colors.black,
                 fontWeight: FontWeight.normal,
@@ -44,7 +48,7 @@ class _SelectionSectionItemState extends State<SelectionSectionItem> {
             ),
           ),
           trailing: Text(
-            value,
+            widget.value,
             style: TextStyle(
                 color: AppTheme.colors.grey,
                 fontWeight: FontWeight.normal,
