@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_beep/flutter_beep.dart';
 import 'package:my_tinder/models/profile.dart';
 import 'package:my_tinder/themes/app_theme.dart';
 import 'package:my_tinder/views/profile_edit/profile_edit.dart';
@@ -30,7 +31,9 @@ class MatchButton implements Button {
   @override
   void onPress() {
     _scrollToIndex();
-    SystemSound.play(sound);
+    FlutterBeep.beep();
+    // The next line should play a sound but it's not working, so the FlutterBeep is doing it
+    // SystemSound.play(sound);
   }
 
   Future _scrollToIndex() async {
