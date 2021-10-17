@@ -4,6 +4,7 @@ import 'package:my_tinder/models/new_matches.dart';
 import 'package:my_tinder/shared/widgets/search_bar.dart';
 import 'package:my_tinder/themes/app_theme.dart';
 import 'package:my_tinder/constants/index.dart';
+import 'package:my_tinder/views/components/dismiss_keyboard.dart';
 import 'package:my_tinder/views/messages/widgets/messages_list.dart';
 import 'package:my_tinder/views/messages/widgets/new_matches_list.dart';
 
@@ -56,55 +57,57 @@ class _MessagesState extends State<Messages> {
     precacheImage(const AssetImage("assets/images/profile_pic_9.jpg"), context);
     precacheImage(const AssetImage("assets/images/profile_pic_10.jpg"), context);
 
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: SearchBar(
-                  onValueChanged: onItemChanged,
-                  textController: _textController,
-                  hintText: "Search someone...",
-                  onClear: onClear,
-                )
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: Text(
-                  'New matches',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.normal,
-                    color: AppTheme.colors.primary
+    return DismissKeyboard(
+      child: Scaffold(
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: SearchBar(
+                    onValueChanged: onItemChanged,
+                    textController: _textController,
+                    hintText: "Search someone...",
+                    onClear: onClear,
+                  )
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Text(
+                    'New matches',
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontFamily: 'Roboto',
+                      fontWeight: FontWeight.normal,
+                      color: AppTheme.colors.primary
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: newMatchesDataList.isEmpty ? 50.0 : 120.0,
-                width: double.infinity,
-                child: NewMatchesList(matches: newMatchesDataList)
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10, bottom: 20),
-                child: Text(
-                  'Messages',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.normal,
-                    color: AppTheme.colors.primary
+                SizedBox(
+                  height: newMatchesDataList.isEmpty ? 50.0 : 120.0,
+                  width: double.infinity,
+                  child: NewMatchesList(matches: newMatchesDataList)
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, bottom: 20),
+                  child: Text(
+                    'Messages',
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontFamily: 'Roboto',
+                      fontWeight: FontWeight.normal,
+                      color: AppTheme.colors.primary
+                    ),
                   ),
                 ),
-              ),
-              MessagesList(conversations: newConversationDataList)
-            ],
-          ),
-        )
+                MessagesList(conversations: newConversationDataList)
+              ],
+            ),
+          )
+        ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter_beep/flutter_beep.dart';
 import 'package:my_tinder/models/profile.dart';
 import 'package:my_tinder/themes/app_theme.dart';
@@ -179,5 +180,115 @@ class PhotoButton implements Button {
   @override
   void onPress() {
     onPressed();
+  }
+}
+
+class TilesButton extends StatelessWidget implements Button {
+  final Function setValue;
+  final String title;
+  final String value;
+  IconData iconData;
+  final bool isArray;
+
+  @override
+  late SystemSoundType sound;
+
+  @override
+  late Icon icon;
+
+  TilesButton(
+  {Key? key,
+    required this.title,
+    required this.value,
+    required this.setValue,
+    required this.iconData,
+    required this.isArray
+  }) : super(key: key);
+
+  late List<String> array = value.replaceAll(", ", ",").trim().split(",");
+
+  bool isSelected() {
+    if (isArray) {
+      if (array.contains(title)) {
+        return true;
+      }
+      return false;
+    } else {
+      if (title == value) {
+        return true;
+      }
+      return false;
+    }
+  }
+
+  @override
+  Widget buildButton() => Padding(
+    padding: const EdgeInsets.only(top: 8.0),
+    child: GestureDetector(
+      onTap: onPress,
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+              color:
+              array.contains(title) ? AppTheme.colors.primary : AppTheme.colors.grey),
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
+        ),
+        child: Container(
+          padding: const EdgeInsets.all(6),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (iconData != MdiIcons.nullIcon)
+                Row(
+                  children: [
+                    Icon(
+                      iconData,
+                      color: isSelected()
+                          ? AppTheme.colors.primary
+                          : AppTheme.colors.grey,
+                      size: 20,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                  ],
+                ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 16,
+                      color: array.contains(title)
+                          ? AppTheme.colors.primary
+                          : AppTheme.colors.grey),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+
+  @override
+  void onPress() {
+    if (isArray) {
+      if (isSelected()) {
+        array.remove(title);
+        setValue(array.join(', '));
+      } else {
+        array.add(title);
+        setValue(array.join(', '));
+      }
+    } else {
+      setValue(title == value ? "Unspecified" : title);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return buildButton();
   }
 }

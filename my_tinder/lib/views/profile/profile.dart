@@ -121,7 +121,7 @@ class _ProfileState extends State<Profile> {
             valueListenable: profile,
             builder: (context, value, child) {
               return Stack(children: [
-                _image != null
+                profile.value!.images[0].substring(0, 6) != "assets"
                     ? Image.file(
                         File(profile.value!.images[0]),
                         fit: BoxFit.cover,

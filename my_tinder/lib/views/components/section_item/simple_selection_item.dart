@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:my_tinder/models/profile.dart';
+import 'package:my_tinder/shared/widgets/button.dart';
 import 'package:my_tinder/themes/app_theme.dart';
+
+import 'package:my_tinder/views/components/modal.dart';
 
 class SimpleSelectionSectionItem extends StatefulWidget {
   ValueNotifier<ProfileModel?> profile;
   final String value;
-  final Function onSubmit;
-  SimpleSelectionSectionItem({required this.profile, required this.value, required this.onSubmit});
+  final String modalTitle;
+  final List<TilesButton> list;
+  final Function setState;
+
+  SimpleSelectionSectionItem({Key? key,
+    required this.profile,
+    required this.value,
+    required this.setState,
+    required this.modalTitle,
+    required this.list,
+  }) : super(key: key);
 
   @override
   _SimpleSelectionSectionItemState createState() =>
@@ -19,9 +31,12 @@ class _SimpleSelectionSectionItemState
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        // TODO: Open la bonne modale + renvoyer la valeur set dans la modale
-        // + Transform le tableau de value en plusieurs
         onTap: () {
+          if (widget.modalTitle == 'Choose your interests') {
+            bottomSearchModal(context, widget.modalTitle, widget.list, widget.setState, widget.value);
+          } else {
+            bottomModal(context, widget.modalTitle, widget.list, widget.setState, widget.value);
+          }
         },
         child: ListTile(
           contentPadding: const EdgeInsets.only(

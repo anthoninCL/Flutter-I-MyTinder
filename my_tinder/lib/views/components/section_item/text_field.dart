@@ -5,7 +5,14 @@ class TextFieldSection extends StatefulWidget {
   final String title;
   final String value;
   final Function setState;
-  const TextFieldSection({Key? key, required this.title, required this.value, required this.setState}) : super(key: key);
+  final TextInputType type;
+  const TextFieldSection(
+      {
+        required this.title,
+        required this.value,
+        required this.setState,
+        required this.type
+      });
 
   @override
   _TextFieldSectionState createState() => _TextFieldSectionState();
@@ -29,7 +36,7 @@ class _TextFieldSectionState extends State<TextFieldSection> {
         width: MediaQuery.of(context).size.width / 2,
         child: TextField(
           textAlign: TextAlign.right,
-          keyboardType: TextInputType.number,
+          keyboardType: widget.type,
           decoration: InputDecoration(
             border: InputBorder.none,
             hintText: widget.value,
