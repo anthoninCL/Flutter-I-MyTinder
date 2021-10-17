@@ -56,6 +56,16 @@ class _MessagesState extends State<Messages> {
     precacheImage(const AssetImage("assets/images/profile_pic_8.jpg"), context);
     precacheImage(const AssetImage("assets/images/profile_pic_9.jpg"), context);
     precacheImage(const AssetImage("assets/images/profile_pic_10.jpg"), context);
+    precacheImage(const AssetImage("assets/images/profile_pic_11.jpg"), context);
+    precacheImage(const AssetImage("assets/images/profile_pic_12.jpg"), context);
+    precacheImage(const AssetImage("assets/images/profile_pic_13.jpg"), context);
+    precacheImage(const AssetImage("assets/images/profile_pic_14.jpg"), context);
+    precacheImage(const AssetImage("assets/images/profile_pic_15.jpg"), context);
+    precacheImage(const AssetImage("assets/images/profile_pic_16.jpg"), context);
+    precacheImage(const AssetImage("assets/images/profile_pic_17.jpg"), context);
+    precacheImage(const AssetImage("assets/images/profile_pic_18.jpg"), context);
+    precacheImage(const AssetImage("assets/images/profile_pic_19.jpg"), context);
+    precacheImage(const AssetImage("assets/images/profile_pic_20.jpg"), context);
 
     return DismissKeyboard(
       child: Scaffold(
