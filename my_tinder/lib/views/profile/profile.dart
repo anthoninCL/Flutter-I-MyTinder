@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:my_tinder/models/profile.dart';
 import 'package:my_tinder/views/profile/profile_portrait_footer.dart';
+import 'package:my_tinder/views/profile_details/profile_details.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:my_tinder/constants/matches.dart';
 
 Future<ProfileModel> loadProfile() async {
   SharedPreferences s = await SharedPreferences.getInstance();
@@ -49,7 +51,6 @@ class _ProfileState extends State<Profile> {
   void initState() {
     super.initState();
     loadProfile().then((value) {
-      print("Finished loading profile");
       setState(() {
         profile.value = value;
         isLoading = false;
@@ -120,48 +121,60 @@ class _ProfileState extends State<Profile> {
         : ValueListenableBuilder<ProfileModel?>(
             valueListenable: profile,
             builder: (context, value, child) {
-              return Stack(children: [
-                profile.value!.images[0].substring(0, 6) != "assets"
-                    ? Image.file(
-                        File(profile.value!.images[0]),
-                        fit: BoxFit.cover,
-                        height: MediaQuery.of(context).size.height,
-                        width: MediaQuery.of(context).size.width,
-                      )
-                    : Image.asset(
-                        profile.value!.images[0],
-                        fit: BoxFit.cover,
-                        height: MediaQuery.of(context).size.height,
-                        width: MediaQuery.of(context).size.width,
+              return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProfileDetails(
+                          index: 0,
+                          profile: Match.from(profile.value!),
+                        ),
                       ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            profile.value!.city,
-                            style: const TextStyle(
-                                fontSize: 25,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w700),
-                          ),
-                          const Spacer(),
-                          ProfilePortraitFooter(
-                            profile: profile,
-                            showPicker: () => showPicker(context),
+                    );
+                  },
+                  child: Stack(children: [
+                    profile.value!.images[0].substring(0, 6) != "assets"
+                        ? Image.file(
+                            File(profile.value!.images[0]),
+                            fit: BoxFit.cover,
+                            height: MediaQuery.of(context).size.height,
+                            width: MediaQuery.of(context).size.width,
                           )
-                        ],
+                        : Image.asset(
+                            profile.value!.images[0],
+                            fit: BoxFit.cover,
+                            height: MediaQuery.of(context).size.height,
+                            width: MediaQuery.of(context).size.width,
+                          ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20.0),
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                profile.value!.city,
+                                style: const TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w700),
+                              ),
+                              const Spacer(),
+                              ProfilePortraitFooter(
+                                profile: profile,
+                                showPicker: () => showPicker(context),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-              ]);
+                  ]));
             });
   }
 }

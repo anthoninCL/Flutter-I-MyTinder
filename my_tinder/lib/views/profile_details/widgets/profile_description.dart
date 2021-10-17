@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:my_tinder/themes/app_theme.dart';
@@ -19,7 +20,7 @@ const profilePictures = [
 
 class ProfileDescription extends StatefulWidget {
   final int index;
-  final AutoScrollController controller;
+  final AutoScrollController? controller;
   final Match profile;
 
   @override
@@ -27,36 +28,43 @@ class ProfileDescription extends StatefulWidget {
 
   const ProfileDescription({
     Key? key,
-    required this.controller,
     required this.index,
     required this.profile,
+    this.controller = null,
   }) : super(key: key);
 }
 
 class _ProfileDescription extends State<ProfileDescription> {
   late MatchButton skipButton;
   late MatchButton likeButton;
+  late EditButton editButton;
+  late SettingsButton settingsButton;
+  late PhotoButton photoButton;
 
   @override
   void initState() {
     super.initState();
 
     // Initialise buttons
-    skipButton = MatchButton(
-        const Icon(Icons.close, color: Colors.black),
-        SystemSoundType.alert,
-        widget.controller,
-        widget.index,
-        () => Navigator.pop(context));
-    likeButton = MatchButton(
-        Icon(Icons.favorite_outline, size: 25, color: AppTheme.colors.primary),
-        SystemSoundType.alert,
-        widget.controller,
-        widget.index,
-        () => Navigator.pop(context));
+    if (widget.controller != null) {
+      skipButton = MatchButton(
+          const Icon(Icons.close, color: Colors.black),
+          SystemSoundType.alert,
+          widget.controller,
+          widget.index,
+          () => Navigator.pop(context));
+      likeButton = MatchButton(
+          Icon(Icons.favorite_outline,
+              size: 25, color: AppTheme.colors.primary),
+          SystemSoundType.alert,
+          widget.controller,
+          widget.index,
+          () => Navigator.pop(context));
+    }
   }
 
   Widget buildMatchButton(MatchButton button) => button.buildButton();
+
   Widget buildReturnButton(ReturnButton button) => button.buildButton();
 
   @override
@@ -69,13 +77,20 @@ class _ProfileDescription extends State<ProfileDescription> {
               Stack(
                 children: [
                   ClipRRect(
-                    child: Image.asset(
-                      widget.profile.images[0],
-                      width: MediaQuery.of(context).size.width,
-                      height: 375,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                      child:
+                          widget.profile.images[0].substring(0, 6) == "assets"
+                              ? Image.asset(
+                                  widget.profile.images[0],
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 375,
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.file(
+                                  File(widget.profile.images[0]),
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 375,
+                                  fit: BoxFit.cover,
+                                )),
                   Align(
                       alignment: Alignment.bottomRight,
                       child: Container(
@@ -150,21 +165,21 @@ class _ProfileDescription extends State<ProfileDescription> {
                 child: const Divider(),
               ),
               ProfilePicturesList(
-                  images: List.from(widget.profile.images)..removeAt(0)
-              ),
+                  images: List.from(widget.profile.images)..removeAt(0)),
               const SizedBox(
                 height: 100,
               )
             ],
           ),
         ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
-            padding: const EdgeInsets.only(bottom: 30),
-            child: buildChoiceRow(index: widget.index),
-          ),
-        ),
+        if (widget.controller != null)
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              padding: const EdgeInsets.only(bottom: 30),
+              child: buildChoiceRow(index: widget.index),
+            ),
+          )
       ],
     );
   }

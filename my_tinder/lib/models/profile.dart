@@ -20,7 +20,8 @@ class ProfileModel {
   String gender;
   String orientation;
 
-  ProfileModel(this.username,
+  ProfileModel(
+      this.username,
       this.age,
       this.bio,
       this.phoneNumber,
@@ -43,24 +44,24 @@ class ProfileModel {
 
   ProfileModel.from(ProfileModel profile)
       : this(
-      profile.username,
-      profile.age,
-      profile.bio,
-      profile.phoneNumber,
-      profile.email,
-      profile.ageRange,
-      profile.wantToMeet,
-      profile.range,
-      profile.images,
-      profile.zodiacSign,
-      profile.food,
-      profile.pet,
-      profile.socialNetwork,
-      profile.sport,
-      profile.drinks,
-      profile.cigarettes,
-      profile.interests,
-      profile.city,
-      profile.gender,
-      profile.orientation);
+            profile.username,
+            profile.age,
+            profile.bio,
+            profile.phoneNumber,
+            profile.email,
+            profile.ageRange,
+            profile.wantToMeet,
+            profile.range,
+            profile.images,
+            profile.zodiacSign,
+            profile.food,
+            profile.pet,
+            profile.socialNetwork,
+            profile.sport,
+            profile.drinks,
+            profile.cigarettes,
+            profile.interests,
+            profile.city,
+            profile.gender,
+            profile.orientation);
 }
