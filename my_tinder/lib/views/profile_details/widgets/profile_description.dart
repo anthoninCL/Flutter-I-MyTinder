@@ -68,11 +68,13 @@ class _ProfileDescription extends State<ProfileDescription> {
             children: [
               Stack(
                 children: [
-                  Image.asset(
-                    widget.profile.images[0],
-                    width: double.infinity,
-                    height: 375,
-                    fit: BoxFit.cover,
+                  ClipRRect(
+                    child: Image.asset(
+                      widget.profile.images[0],
+                      width: MediaQuery.of(context).size.width,
+                      height: 375,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   Align(
                       alignment: Alignment.bottomRight,
@@ -148,14 +150,18 @@ class _ProfileDescription extends State<ProfileDescription> {
                 child: const Divider(),
               ),
               ProfilePicturesList(
-                  images: List.from(widget.profile.images)..removeAt(0)),
+                  images: List.from(widget.profile.images)..removeAt(0)
+              ),
+              const SizedBox(
+                height: 100,
+              )
             ],
           ),
         ),
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            padding: const EdgeInsets.only(bottom: 80),
+            padding: const EdgeInsets.only(bottom: 30),
             child: buildChoiceRow(index: widget.index),
           ),
         ),

@@ -20,8 +20,7 @@ class ProfileDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.colors.white,
-      body: Container(
-        padding: const EdgeInsets.only(top: 50),
+      body: SafeArea(
         child: ProfileDescription(
           index: index,
           controller: controller,
