@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_tinder/constants/matches.dart';
+import 'package:my_tinder/themes/app_theme.dart';
 import 'package:my_tinder/views/matches/widgets/landscape/profile_card_landscape_header.dart';
+import 'package:my_tinder/views/profile_details/widgets/lifestyles.dart';
 
 class ProfileCardLandscapeMainContent extends StatelessWidget {
   final Match profile;
@@ -27,6 +29,25 @@ class ProfileCardLandscapeMainContent extends StatelessWidget {
                     city: profile.city,
                     distance: profile.distance),
               ),
+              UserLifeStyles(
+                lifeStyleArray: profile.lifestyles,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(top: 10.0),
+                child: Divider(),
+              ),
+              UserLifeStyles(lifeStyleArray: profile.interests),
+              Container(
+                padding: const EdgeInsets.only(top: 10),
+                child: const Divider(),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10.0),
+                child: Text(
+                  profile.bio,
+                  style: TextStyle(fontSize: 16, color: AppTheme.colors.grey),
+                ),
+              ),
             ],
           ),
         ),
@@ -34,5 +55,4 @@ class ProfileCardLandscapeMainContent extends StatelessWidget {
       flex: 1,
     );
   }
-
 }
