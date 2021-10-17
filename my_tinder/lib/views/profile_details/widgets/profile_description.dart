@@ -1,6 +1,6 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:my_tinder/models/profile.dart';
 import 'package:my_tinder/themes/app_theme.dart';
 import 'package:my_tinder/views/profile_details/widgets/lifestyles.dart';
 import 'package:my_tinder/views/profile_details/widgets/localization.dart';
@@ -64,6 +64,7 @@ class _ProfileDescription extends State<ProfileDescription> {
   }
 
   Widget buildMatchButton(MatchButton button) => button.buildButton();
+
   Widget buildReturnButton(ReturnButton button) => button.buildButton();
 
   @override
@@ -76,13 +77,20 @@ class _ProfileDescription extends State<ProfileDescription> {
               Stack(
                 children: [
                   ClipRRect(
-                    child: Image.asset(
-                      widget.profile.images[0],
-                      width: MediaQuery.of(context).size.width,
-                      height: 375,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                      child:
+                          widget.profile.images[0].substring(0, 6) == "assets"
+                              ? Image.asset(
+                                  widget.profile.images[0],
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 375,
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.file(
+                                  File(widget.profile.images[0]),
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 375,
+                                  fit: BoxFit.cover,
+                                )),
                   Align(
                       alignment: Alignment.bottomRight,
                       child: Container(
